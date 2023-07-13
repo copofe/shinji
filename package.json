@@ -30,7 +30,6 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "@copofe/eslint-config-typescript": "^0.1.17",
     "drizzle-kit": "^0.19.4"
   }
 }
