@@ -1,7 +1,7 @@
 import { currentUser } from '@clerk/nextjs';
 import { redirect } from 'next/navigation';
 
-export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+export default async function ConsoleLayout({ children }: { children: React.ReactNode }) {
   const user = await currentUser();
   if (!user || user.publicMetadata.role !== 'admin') {
     redirect('/');
@@ -9,7 +9,6 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   return (
     <div>
-      <h1>{user.username}</h1>
       <main>{children}</main>
     </div>
   );
