@@ -1,7 +1,6 @@
 import { drizzle } from 'drizzle-orm/planetscale-serverless';
 import { connect } from '@planetscale/database';
 
-export * as user from './schema/user';
 export * as post from './schema/post';
 
 const connection = connect({

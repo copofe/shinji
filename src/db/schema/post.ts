@@ -6,6 +6,7 @@ export const table = mysqlTable('post', {
   id: serial('id').primaryKey(),
   title: varchar('title', { length: 255 }),
   authorId: int('author_id'),
+  author: varchar('author', { length: 255 }),
   excerpt: text('excerpt'),
   content: text('content'),
   likes: int('likes').default(0),

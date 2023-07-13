@@ -1,11 +1,6 @@
 import Image from 'next/image';
-// import db, { user } from '::/db';
 
 export default function Home() {
-  // const users = () => {
-  //   return db.select().from(user.table);
-  // };
-  // users().then(console.log).catch((e) => console.error(e));
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
