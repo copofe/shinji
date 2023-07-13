@@ -3,16 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "db:generate": "drizzle-kit generate:mysql",
+    "db:push": "drizzle-kit push:mysql",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.21.15",
+    "@planetscale/database": "^1.8.0",
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
+    "@vercel/analytics": "^1.0.1",
     "autoprefixer": "10.4.14",
+    "dotenv": "^16.3.1",
+    "drizzle-orm": "^0.27.2",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.9",
     "next": "13.4.9",
@@ -21,5 +28,9 @@
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.2",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@copofe/eslint-config-typescript": "^0.1.17",
+    "drizzle-kit": "^0.19.4"
   }
 }
