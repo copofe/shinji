@@ -49,7 +49,7 @@ export default async function RootLayout({
   const {
     data: { user },
   } = await supabase.auth.getUser(cookie.get(TOKEN_KEY)?.value)
-  if (user?.role === 'authenticate') {
+  if (user?.role === 'authenticated') {
     menus.push({
       title: 'Console',
       icon: Terminal,

@@ -45,10 +45,10 @@ export default function Login() {
       } = await supabase.auth.signInWithPassword({ email, password })
       if (session) {
         cookie.updateAuth(session)
+        router.replace('/console')
       } else {
         setLoading(false)
       }
-      router.replace('/console')
     } catch (error) {
       setLoading(false)
     }
