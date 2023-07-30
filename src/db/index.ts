@@ -1,12 +1,10 @@
-import { drizzle } from 'drizzle-orm/planetscale-serverless';
-import { connect } from '@planetscale/database';
+import { createClient } from '@supabase/supabase-js';
+import { Database } from './types';
 
-export * as post from './schema/post';
-
-const connection = connect({
-  host: process.env.DATABASE_HOST,
-  username: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
-});
-
-export default drizzle(connection);
+export const supabase = createClient<Database>(
+  process.env.NEXT_PUBLIC_SUPABASE_URL as string,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string,
+  {
+    auth: { persistSession: false },
+  }
+);

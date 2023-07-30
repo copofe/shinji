@@ -1,15 +1,24 @@
-import { currentUser } from '@clerk/nextjs';
-import { redirect } from 'next/navigation';
+'use client'
 
-export default async function ConsoleLayout({ children }: { children: React.ReactNode }) {
-  const user = await currentUser();
-  if (!user || user.publicMetadata.role !== 'admin') {
-    redirect('/');
+import { supabase } from '::/db'
+import { useEffect } from 'react'
+import { REFRESH_TOKEN, TOKEN_KEY } from '../const'
+import { cookie } from '::/lib';
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const verifyIdentify = async () => {
   }
-
-  return (
-    <div>
-      <main>{children}</main>
-    </div>
-  );
+  useEffect(() => {
+    verifyIdentify()
+    supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'TOKEN_REFRESHED') {
+        cookie.updateAuth(session)
+      }
+    })
+  })
+  return children
 }
