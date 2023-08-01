@@ -1,5 +1,5 @@
 import { ThemeToggle } from '::/components/theme-toggle'
-import { DoorOpen, Lightbulb, Newspaper, Package } from 'lucide-react'
+import { DoorOpen, Lightbulb, Newspaper, Package, Smile } from 'lucide-react'
 import Link from 'next/link'
 
 const navMenus = [
@@ -23,6 +23,11 @@ const navMenus = [
     icon: Lightbulb,
     href: '/memo',
   },
+  {
+    name: 'Friend',
+    icon: Smile,
+    href: '/friend',
+  },
 ]
 
 export default async function MainLayout({
@@ -33,8 +38,8 @@ export default async function MainLayout({
   return (
     <>
       <header className="flex justify-between items-center flex-shrink-0 h-16 px-6 lg:px-12 border-b">
-        <div className="text-3xl font-semibold mr-4 lg:mr-8 flex justify-center items-center">
-          <Link href="/">.S</Link>
+        <div className="text-3xl font-semibold mr-4 lg:mr-8 flex justify-center items-center seaborn">
+          <Link href="/">S</Link>
         </div>
         <nav className="flex items-center">
           {navMenus.map((menu) => {

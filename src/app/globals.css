@@ -88,3 +88,12 @@
 html, body {
   height: 100%;
 }
+
+@font-face {
+  font-family: "seaborn";
+  src: url('/seaborn.woff') format('woff');
+}
+
+.seaborn {
+  font-family: "seaborn" !important;
+}
