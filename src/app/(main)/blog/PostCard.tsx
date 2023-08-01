@@ -4,7 +4,7 @@ import { Post } from '::/types'
 
 export function PostCard({ post }: { post: Post }) {
   return (
-    <Link href={`/blog/${post.slug}`} prefetch={false}>
+    <Link href={`/blog/${post.slug}`}>
       <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
         {post.title}
       </h2>
