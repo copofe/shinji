@@ -26,7 +26,7 @@ export default async function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex min-h-screen flex-col items-stretch overflow-hidden bg-background text-foreground">
             {children}
-            <footer className="flex-shrink-0 flex justify-center py-4">
+            <footer className="flex-shrink-0 flex justify-center py-4 text-sm">
               <div>{new Date().getFullYear()} © Shinji</div>
             </footer>
           </div>
