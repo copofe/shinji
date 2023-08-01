@@ -11,10 +11,9 @@ import {
   FormItem,
   FormLabel,
 } from '::/components/ui'
-import { supabase } from '::/db'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { cookie } from '::/lib';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
 
 const formSchema = z.object({
   email: z
@@ -26,6 +25,7 @@ const formSchema = z.object({
 })
 
 export default function Login() {
+  const supabase = createClientComponentClient()
   const form = useForm<z.infer<typeof formSchema>>({
     defaultValues: {
       email: undefined,
@@ -41,13 +41,12 @@ export default function Login() {
     const { email, password } = values
     try {
       const {
-        data: { session },
+        error,
       } = await supabase.auth.signInWithPassword({ email, password })
-      if (session) {
-        cookie.updateAuth(session)
-        router.replace('/console')
-      } else {
+      if (error) {
         setLoading(false)
+      } else {
+        router.replace('/')
       }
     } catch (error) {
       setLoading(false)
@@ -55,7 +54,7 @@ export default function Login() {
   }
 
   return (
-    <div className="h-full flex justify-center items-center">
+    <div className="flex-1 flex justify-center items-center">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
@@ -82,7 +81,7 @@ export default function Login() {
               </FormItem>
             )}
           />
-          <Button type="submit" disabled={loading}>
+          <Button variant='secondary' className='w-full' type="submit" disabled={loading}>
             {loading ? 'Logining...' : 'Login'}
           </Button>
         </form>
