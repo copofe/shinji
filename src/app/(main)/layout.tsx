@@ -42,7 +42,6 @@ export default async function MainLayout({
               <Link
                 key={menu.href}
                 href={menu.href}
-                prefetch={false}
                 className="lg:mx-8 mx-4 flex items-center group"
               >
                 <menu.icon />
