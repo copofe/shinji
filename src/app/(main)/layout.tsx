@@ -1,13 +1,8 @@
 import { ThemeToggle } from '::/components/theme-toggle'
-import { DoorOpen, Lightbulb, Newspaper, Package, Smile } from 'lucide-react'
+import { Lightbulb, Newspaper, Package, Smile } from 'lucide-react'
 import Link from 'next/link'
 
 const navMenus = [
-  {
-    name: 'Home',
-    icon: DoorOpen,
-    href: '/',
-  },
   {
     name: 'Blog',
     icon: Newspaper,
