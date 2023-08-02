@@ -33,10 +33,6 @@ export default async function RootLayout({
         </ThemeProvider>
       </body>
       <Analytics />
-      <Script src="//unpkg.com/heti/umd/heti-addon.min.js" strategy='afterInteractive'></Script>
-      <Script id='heti-script' strategy='lazyOnload'>
-        {'const heti = new Heti(\'.heti\'); heti.autoSpacing()'}
-      </Script>
     </html>
   )
 }

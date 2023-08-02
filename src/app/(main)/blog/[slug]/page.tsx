@@ -5,6 +5,7 @@ import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { BlogPostQuery, Database } from '::/db'
+import BlogPostComment from './Comment';
 
 export default async function BlogPost({
   params,
@@ -30,15 +31,18 @@ export default async function BlogPost({
   }
 
   return (
-    <article className='heti'>
-      <h1>{post.title}</h1>
-      <p className="text-secondary-foreground heti-meta">
-        <span className="mr-2">{post.author?.nickname}</span>·
-        <time className="ml-2">
-          {dayjs(post.createdAt).format('YYYY-MM-DD')}
-        </time>
-      </p>
-      <div dangerouslySetInnerHTML={{ __html: contentHtml }}></div>
-    </article>
+    <>
+      <article className="heti">
+        <h1>{post.title}</h1>
+        <p className="text-secondary-foreground heti-meta">
+          <span className="mr-2">{post.author?.nickname}</span>·
+          <time className="ml-2">
+            {dayjs(post.createdAt).format('YYYY-MM-DD')}
+          </time>
+        </p>
+        <div dangerouslySetInnerHTML={{ __html: contentHtml }}></div>
+      </article>
+      <BlogPostComment />
+    </>
   )
 }
