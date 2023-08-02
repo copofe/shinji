@@ -35,8 +35,9 @@ export default async function BlogPost({
       <article className="heti">
         <h1>{post.title}</h1>
         <p className="text-secondary-foreground heti-meta">
-          <span className="mr-2">{post.author?.nickname}</span>·
-          <time className="ml-2">
+          <span>{post.author?.nickname}</span>
+          <span className='mx-1'>·</span>
+          <time>
             {dayjs(post.createdAt).format('YYYY-MM-DD')}
           </time>
         </p>

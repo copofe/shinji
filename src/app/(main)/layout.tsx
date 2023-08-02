@@ -32,7 +32,7 @@ export default async function MainLayout({
 }) {
   return (
     <>
-      <header className="flex justify-between items-center flex-shrink-0 h-14 px-6 lg:px-12 border-b sticky top-0 bg-background bg-opacity-80 z-50 backdrop-blur">
+      <header className="flex justify-between items-center flex-shrink-0 h-14 px-4 lg:px-12 border-b sticky top-0 bg-background bg-opacity-80 z-50 backdrop-blur">
         <div className="text-3xl font-semibold flex justify-center items-center seaborn">
           <Link href="/">S</Link>
         </div>
