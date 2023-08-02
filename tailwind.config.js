@@ -20,14 +20,14 @@ module.exports = {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
+        background: 'hsla(var(--background), var(--tw-bg-opacity))',
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
+          DEFAULT: 'hsla(var(--secondary), var(--tw-bg-opacity))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
         destructive: {
@@ -43,11 +43,11 @@ module.exports = {
           foreground: 'hsl(var(--accent-foreground))',
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
+          DEFAULT: 'hsla(var(--popover), var(--tw-bg-opacity))',
           foreground: 'hsl(var(--popover-foreground))',
         },
         card: {
-          DEFAULT: 'hsl(var(--card))',
+          DEFAULT: 'hsla(var(--card), var(--tw-bg-opacity))',
           foreground: 'hsl(var(--card-foreground))',
         },
       },

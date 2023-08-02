@@ -32,7 +32,7 @@ export default async function MainLayout({
 }) {
   return (
     <>
-      <header className="flex justify-between items-center flex-shrink-0 h-14 px-6 lg:px-12 border-b">
+      <header className="flex justify-between items-center flex-shrink-0 h-14 px-6 lg:px-12 border-b sticky top-0 bg-background bg-opacity-80 z-50 backdrop-blur">
         <div className="text-3xl font-semibold flex justify-center items-center seaborn">
           <Link href="/">S</Link>
         </div>
@@ -44,7 +44,7 @@ export default async function MainLayout({
                 href={menu.href}
                 className="lg:mx-8 mx-4 flex items-center group"
               >
-                <menu.icon className='h-5 w-5' />
+                <menu.icon className="h-5 w-5" />
                 <span className="ml-2 hidden lg:block text-sm scale-0 -translate-x-full transition-all group-hover:scale-100 group-hover:translate-x-0">
                   {menu.name}
                 </span>

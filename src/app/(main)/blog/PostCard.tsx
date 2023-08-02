@@ -4,17 +4,17 @@ import { Post } from '::/types'
 
 export function PostCard({ post }: { post: Post }) {
   return (
-    <Link href={`/blog/${post.slug}`}>
-      <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
-        {post.title}
-      </h2>
-      <p className="leading-7 [&:not(:first-child)]:my-4">{post.excerpt}</p>
-      <div className="text-secondary-foreground text-sm">
+    <>
+      <Link href={`/blog/${post.slug}`}>
+        <h2>{post.title}</h2>
+      </Link>
+      <div className="text-secondary-foreground text-sm heti-meta">
         <span className="mr-2">{post.author?.nickname}</span>·
         <time className="ml-2">
           {dayjs(post.createdAt).format('YYYY-MM-DD')}
         </time>
       </div>
-    </Link>
+      <p>{post.excerpt}</p>
+    </>
   )
 }
