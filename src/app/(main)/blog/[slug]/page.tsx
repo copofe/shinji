@@ -34,7 +34,7 @@ export default async function BlogPost({
     <>
       <article className="heti">
         <h1>{post.title}</h1>
-        <p className="text-secondary-foreground heti-meta">
+        <p className="text-secondary-foreground text-sm heti-meta">
           <span>{post.author?.nickname}</span>
           <span className='mx-1'>·</span>
           <time>
