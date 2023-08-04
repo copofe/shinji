@@ -24,7 +24,7 @@ export default async function Post({
     <div className='w-full lg:w-[42rem]'>
       {posts.data?.map((post) => {
         return (
-          <div key={post.slug} className="heti">
+          <div key={post.slug} className="heti mb-4">
             <PostCard post={post} />
           </div>
         )

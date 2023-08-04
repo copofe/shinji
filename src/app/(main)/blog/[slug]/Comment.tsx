@@ -31,6 +31,6 @@ export default function BlogPostComment() {
     }
     ref.current?.appendChild(script)
 
-  }, [])
+  }, [theme])
   return <div ref={ref} className="w-full"></div>
 }
