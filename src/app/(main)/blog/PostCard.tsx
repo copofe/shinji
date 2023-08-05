@@ -1,19 +1,15 @@
 import Link from 'next/link'
-import dayjs from 'dayjs'
 import { Post } from '::/types'
+import PostMeta from './PostMeta';
 
 export function PostCard({ post }: { post: Post }) {
   return (
-    <>
-      <h3>
+    <div className="py-8 lg:py-12 filter-noise">
+      <h3 className="text-xl lg:text-2xl font-semibold">
         <Link href={`/blog/${post.slug}`}>{post.title}</Link>
       </h3>
-      <div className="text-secondary-foreground text-sm heti-meta">
-        <span>{post.author?.nickname}</span>
-        <span className="mx-1">·</span>
-        <time>{dayjs(post.createdAt).format('YYYY-MM-DD')}</time>
-      </div>
-      <p>{post.excerpt}</p>
-    </>
+      <p className="py-2 text-sm lg:text-base">{post.excerpt}</p>
+      <PostMeta post={post} />
+    </div>
   )
 }

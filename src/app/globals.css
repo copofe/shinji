@@ -68,7 +68,7 @@
   }
 
   ::selection {
-    background: hsl(var(--accent))
+    background: hsl(var(--accent));
   }
 }
 
@@ -85,15 +85,16 @@
   }
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
 @font-face {
-  font-family: "seaborn";
+  font-family: 'seaborn';
   src: url('/seaborn.woff') format('woff');
 }
 
 .seaborn {
-  font-family: "seaborn" !important;
+  font-family: 'seaborn' !important;
 }

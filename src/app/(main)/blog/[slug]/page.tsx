@@ -1,11 +1,11 @@
-import dayjs from 'dayjs'
 import html from 'remark-html'
 import { remark } from 'remark'
 import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { BlogPostQuery, Database } from '::/db'
-import BlogPostComment from './Comment';
+import BlogPostComment from './Comment'
+import PostMeta from '../PostMeta'
 
 export default async function BlogPost({
   params,
@@ -32,15 +32,9 @@ export default async function BlogPost({
 
   return (
     <>
-      <article className="heti">
+      <article className="heti filter-noise relative">
         <h1>{post.title}</h1>
-        <p className="text-secondary-foreground text-sm heti-meta">
-          <span>{post.author?.nickname}</span>
-          <span className='mx-1'>·</span>
-          <time>
-            {dayjs(post.createdAt).format('YYYY-MM-DD')}
-          </time>
-        </p>
+        <PostMeta post={post} />
         <div dangerouslySetInnerHTML={{ __html: contentHtml }}></div>
       </article>
       <BlogPostComment />
