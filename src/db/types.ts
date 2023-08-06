@@ -34,13 +34,13 @@ export interface Database {
       post: {
         Row: {
           authorId: string | null
-          content: string | null
+          content: string
           cover: string | null
           createdAt: string | null
           excerpt: string | null
           like: number | null
           published: boolean
-          slug: string
+          slug: string | null
           title: string | null
           updatedAt: string | null
         }

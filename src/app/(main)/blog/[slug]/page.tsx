@@ -1,11 +1,15 @@
-import html from 'remark-html'
-import { remark } from 'remark'
 import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
+import * as runtime from 'react/jsx-runtime'
+import { compile, run } from '@mdx-js/mdx'
+import remarkUnwrapImages from 'remark-unwrap-images'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { BlogPostQuery, Database } from '::/db'
 import BlogPostComment from './Comment'
 import PostMeta from '../PostMeta'
+import { Fragment } from 'react'
+import Tweet from '::/components/Tweet'
+import Image from '::/components/post/image'
 
 export default async function BlogPost({
   params,
@@ -24,18 +28,29 @@ export default async function BlogPost({
   if (post === null) {
     notFound()
   }
-  let contentHtml = post.content || ''
-  if (contentHtml) {
-    const processedContent = await remark().use(html).process(contentHtml)
-    contentHtml = processedContent.toString()
-  }
+
+  const content = String(
+    await compile(post.content, {
+      outputFormat: 'function-body',
+      development: false,
+      remarkPlugins: [remarkUnwrapImages]
+    })
+  )
+
+  const contentModule = await run(content, runtime)
+  const PostContent = contentModule ? contentModule.default : Fragment
 
   return (
     <>
       <article className="heti filter-noise relative">
         <h1>{post.title}</h1>
         <PostMeta post={post} />
-        <div dangerouslySetInnerHTML={{ __html: contentHtml }}></div>
+        <PostContent
+          components={{
+            img: Image,
+            Tweet,
+          }}
+        />
       </article>
       <BlogPostComment />
     </>
