@@ -101,3 +101,6 @@ body {
   font-family: 'seaborn' !important;
 }
 
+article {
+  width: 100%;
+}

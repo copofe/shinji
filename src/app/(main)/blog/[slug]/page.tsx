@@ -10,6 +10,7 @@ import PostMeta from '../PostMeta'
 import { Fragment } from 'react'
 import Tweet from '::/components/Tweet'
 import Image from '::/components/post/image'
+import CodeBlock from '::/components/CodeBlock';
 
 export default async function BlogPost({
   params,
@@ -49,6 +50,7 @@ export default async function BlogPost({
           components={{
             img: Image,
             Tweet,
+            pre: CodeBlock
           }}
         />
       </article>

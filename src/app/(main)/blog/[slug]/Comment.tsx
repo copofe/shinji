@@ -28,7 +28,6 @@ export default function BlogPostComment() {
     script.setAttribute('repo', repo)
 
     if (ref.current?.innerHTML) {
-      debugger
       ref.current.innerHTML = ''
     }
     ref.current?.appendChild(script)
