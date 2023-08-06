@@ -2,8 +2,8 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
 import { Inter } from 'next/font/google'
-import { ThemeProvider } from '::/components/theme-provider'
-import Script from 'next/script'
+import { ThemeProvider } from '::/components/ThemeProvider'
+import { AppCommand } from '::/components/AppCommand'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,10 +26,11 @@ export default async function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex min-h-screen flex-col items-stretch bg-background text-foreground">
             {children}
-            <footer className="flex-shrink-0 flex justify-center py-4 text-sm">
-              <div>{new Date().getFullYear()} © Shinji</div>
+            <footer className="flex-shrink-0 flex justify-center items-center py-4 text-sm opacity-60">
+              {new Date().getFullYear()} © Shinji
             </footer>
           </div>
+          <AppCommand />
         </ThemeProvider>
       </body>
       <Analytics />

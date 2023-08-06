@@ -6,6 +6,9 @@ import { Moon, Sun } from 'lucide-react'
 
 export function ThemeToggle() {
   const { setTheme } = useTheme()
+  React.useEffect(() => {
+    setTheme('system')
+  }, [])
 
   return (
     <div className="cursor-pointer relative">

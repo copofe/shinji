@@ -4,6 +4,8 @@
 
 @layer base {
   :root {
+    --tw-bg-opacity: 1;
+
     --background: 30 100% 100%;
     --foreground: 40 100% 8%;
 
@@ -98,3 +100,4 @@ body {
 .seaborn {
   font-family: 'seaborn' !important;
 }
+

@@ -40,9 +40,10 @@ export default function Login() {
     setLoading(true)
     const { email, password } = values
     try {
-      const {
-        error,
-      } = await supabase.auth.signInWithPassword({ email, password })
+      const { error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
       if (error) {
         setLoading(false)
       } else {
@@ -81,7 +82,12 @@ export default function Login() {
               </FormItem>
             )}
           />
-          <Button variant='secondary' className='w-full' type="submit" disabled={loading}>
+          <Button
+            variant="secondary"
+            className="w-full"
+            type="submit"
+            disabled={loading}
+          >
             {loading ? 'Logining...' : 'Login'}
           </Button>
         </form>

@@ -3,7 +3,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { PostCard } from './PostCard'
 import { LatestBlogPostsQuery, Database } from '::/db'
 
-const limit = 10
+const limit = 5
 
 export default async function Post({
   searchParams,

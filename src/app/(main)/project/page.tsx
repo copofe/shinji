@@ -7,7 +7,7 @@ const projects = [
   {
     name: 'Arknights',
     repo: 'https://github.com/copofe/arknights',
-    description: '明日方舟合成玉可挖掘计算及自然增长预测',
+    description: '明日方舟合成玉可挖掘数量计算及自然增长预测。',
   },
 ]
 
@@ -27,7 +27,9 @@ export default async function Project() {
                 <div className="text-base mb-4 font-semibold">
                   {project.name}
                 </div>
-                <div className="text-sm mb-2 h-[4.2em] line-clamp-3">{project.description}</div>
+                <div className="text-sm mb-2 h-[4.2em] line-clamp-3">
+                  {project.description}
+                </div>
                 <a
                   className="text-xs text-secondary-foreground"
                   href={project.repo}
