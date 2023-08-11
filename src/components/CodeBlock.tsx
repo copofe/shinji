@@ -1,12 +1,13 @@
 'use client'
 
 import React from 'react'
-import { Highlight } from 'prism-react-renderer'
+import { Highlight, themes } from 'prism-react-renderer'
+
 export default function CodeBlock({ children }: { children: any }) {
   const code = children.props.children
   const language = children.props.className.replace(/language-/, '')
   return (
-    <Highlight code={code} language={language}>
+    <Highlight code={code} language={language} theme={themes.palenight}>
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre
           style={style}

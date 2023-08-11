@@ -18,10 +18,6 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="zh-Hans-CN">
-      <head>
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel="stylesheet" href="//unpkg.com/heti/umd/heti.min.css"></link>
-      </head>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex min-h-screen flex-col items-stretch bg-background text-foreground">

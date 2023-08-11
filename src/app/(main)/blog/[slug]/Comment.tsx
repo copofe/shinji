@@ -1,30 +1,41 @@
 'use client'
 
 import { useTheme } from 'next-themes';
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 
 const CommentConfig = {
   src: 'https://utteranc.es/client.js',
   repo: 'copofe/shinji',
-  issueTerm: 'pathname',
   crossOrigin: 'anonymous',
   async: true,
 }
 
 import { useRef } from 'react'
 
-export default function BlogPostComment() {
+export default function BlogPostComment({ slug }: { slug: string }) {
   const ref = useRef<HTMLDivElement>(null)
-  const { src, issueTerm, repo } = CommentConfig
+  const { src, repo } = CommentConfig
   const { theme } = useTheme()
+
+  const themeName = useMemo(() => {
+    switch (theme) {
+      case 'light':
+        return 'github-light'
+      case 'dark':
+        return 'github-dark'
+    
+      default:
+        return 'preferred-color-scheme'
+    }
+  }, [theme])
 
   useEffect(() => {
     let script = document.createElement('script')
     script.src = src
     script.async = true
     script.crossOrigin = 'anonymous'
-    script.setAttribute('theme', `github-${theme}`)
-    script.setAttribute('issue-term', issueTerm)
+    script.setAttribute('theme', themeName)
+    script.setAttribute('issue-term', slug)
     script.setAttribute('repo', repo)
 
     if (ref.current?.innerHTML) {

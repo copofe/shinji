@@ -43,7 +43,7 @@ export default async function BlogPost({
 
   return (
     <>
-      <article className="heti filter-noise relative">
+      <article className="prose dark:prose-invert filter-noise relative">
         <h1>{post.title}</h1>
         <PostMeta post={post} />
         <PostContent
@@ -54,7 +54,7 @@ export default async function BlogPost({
           }}
         />
       </article>
-      <BlogPostComment />
+      <BlogPostComment slug={params.slug} />
     </>
   )
 }
