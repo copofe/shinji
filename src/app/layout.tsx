@@ -4,7 +4,6 @@ import { Analytics } from '@vercel/analytics/react'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '::/components/ThemeProvider'
 import { AppCommand } from '::/components/AppCommand'
-import Image from 'next/image'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,13 +19,6 @@ export default async function RootLayout({
   return (
     <html lang="zh-Hans-CN">
       <body className={`${inter.className} bg-background text-foreground`}>
-        <Image
-          src="/bg.png"
-          alt=""
-          fill
-          sizes="100vw"
-          className="!top-auto !h-auto z-0"
-        />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex min-h-screen flex-col items-stretch relative z-10">
             {children}
