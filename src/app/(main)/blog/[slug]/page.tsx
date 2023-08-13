@@ -5,11 +5,11 @@ import { compile, run } from '@mdx-js/mdx'
 import remarkUnwrapImages from 'remark-unwrap-images'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { BlogPostQuery, Database } from '::/db'
-import BlogPostComment from './Comment'
-import PostMeta from '../PostMeta'
+import PostMeta from '../../../../components/post/meta'
 import { Fragment } from 'react'
 import Tweet from '::/components/Tweet'
 import Image from '::/components/post/image'
+import PostComment from '::/components/post/comment'
 import CodeBlock from '::/components/CodeBlock';
 
 export default async function BlogPost({
@@ -43,7 +43,7 @@ export default async function BlogPost({
 
   return (
     <>
-      <article className="prose dark:prose-invert filter-noise relative">
+      <article className="prose dark:prose-invert relative mt-8 lg:mt-12">
         <h1>{post.title}</h1>
         <PostMeta post={post} />
         <PostContent
@@ -54,7 +54,8 @@ export default async function BlogPost({
           }}
         />
       </article>
-      <BlogPostComment slug={params.slug} />
+      <span className='my-12 text-secondary-foreground seaborn'>· End ·</span>
+      <PostComment slug={params.slug} />
     </>
   )
 }

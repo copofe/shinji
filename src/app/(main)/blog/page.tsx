@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import { PostCard } from './PostCard'
+import PostCard from '::/components/post/card'
 import { LatestBlogPostsQuery, Database } from '::/db'
 
 const limit = 5

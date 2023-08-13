@@ -30,14 +30,14 @@ export function SocialLink({
 
   return (
     <Link
-      className="group -m-1 p-1"
+      className="p-1 text-muted-foreground hover:text-foreground"
       href={href}
       target="_blank"
       prefetch={false}
       aria-label={platform}
       {...props}
     >
-      <Icon className="h-5 w-5 text-zinc-400 transition group-hover:text-zinc-700 dark:text-zinc-400 dark:group-hover:text-zinc-200" />
+      <Icon className="h-5 w-5"  />
     </Link>
   )
 }

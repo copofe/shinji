@@ -4,6 +4,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '::/components/ThemeProvider'
 import { AppCommand } from '::/components/AppCommand'
+import Image from 'next/image'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,11 +19,18 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="zh-Hans-CN">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-background text-foreground`}>
+        <Image
+          src="/bg.png"
+          alt=""
+          fill
+          sizes="100vw"
+          className="!top-auto !h-auto z-0"
+        />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="flex min-h-screen flex-col items-stretch bg-background text-foreground">
+          <div className="flex min-h-screen flex-col items-stretch relative z-10">
             {children}
-            <footer className="flex-shrink-0 flex justify-center items-center py-4 text-sm opacity-60">
+            <footer className="flex-shrink-0 flex justify-center items-center py-4 text-sm text-muted-foreground">
               {new Date().getFullYear()} © Shinji
             </footer>
           </div>
