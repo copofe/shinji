@@ -17,7 +17,7 @@ export default function Home() {
           </p>
           <p className="mt-5">You can find me at the following</p>
         </div>
-        <div className="flex [&>*]:mr-4 mt-4">
+        <div className="flex [&>*]:mr-6 mt-4">
           <SocialLink platform="github" href="https://github.com/copofe" />
           <SocialLink platform="twitter" href="https://twitter.com/Shinji_Zl" />
           <SocialLink

@@ -30,7 +30,7 @@ export function SocialLink({
 
   return (
     <Link
-      className="p-1 text-muted-foreground hover:text-foreground"
+      className="text-muted-foreground hover:text-foreground"
       href={href}
       target="_blank"
       prefetch={false}
