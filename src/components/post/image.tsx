@@ -9,11 +9,11 @@ export default function Image(props: JSX.IntrinsicElements['img']) {
       <PhotoProvider maskOpacity={0.6}>
         <PhotoView src={props.src}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img {...props} alt={props.alt} />
+          <img {...props} className='cursor-zoom-in' alt={props.alt} />
         </PhotoView>
       </PhotoProvider>
       {props.alt ? (
-        <figcaption className="text-gray-400 text-xs mt-2">
+        <figcaption className="text-gray-400 text-xs mt-2 text-center">
           {props.alt}
         </figcaption>
       ) : null}
