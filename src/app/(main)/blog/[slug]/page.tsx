@@ -10,7 +10,7 @@ import { Fragment } from 'react'
 import Tweet from '::/components/Tweet'
 import Image from '::/components/post/image'
 import PostComment from '::/components/post/comment'
-import CodeBlock from '::/components/CodeBlock';
+import CodeBlock from '::/components/CodeBlock'
 
 export default async function BlogPost({
   params,
@@ -34,7 +34,7 @@ export default async function BlogPost({
     await compile(post.content, {
       outputFormat: 'function-body',
       development: false,
-      remarkPlugins: [remarkUnwrapImages]
+      remarkPlugins: [remarkUnwrapImages],
     })
   )
 
@@ -50,11 +50,11 @@ export default async function BlogPost({
           components={{
             img: Image,
             Tweet,
-            pre: CodeBlock
+            pre: CodeBlock,
           }}
         />
       </article>
-      <span className='my-12 text-secondary-foreground seaborn'>· End ·</span>
+      <span className="my-12 text-secondary-foreground seaborn">· End ·</span>
       <PostComment slug={params.slug} />
     </>
   )
