@@ -1,12 +1,22 @@
+'use client'
+
+import { PhotoProvider, PhotoView } from 'react-photo-view'
+import 'react-photo-view/dist/react-photo-view.css'
+
 export default function Image(props: JSX.IntrinsicElements['img']) {
   return (
     <figure>
-      {/* eslint-disable */}
-      <img {...props} />
-      <figcaption className="text-gray-400 text-xs mt-2">
-        {props.alt}
-      </figcaption>
-      {/* eslint-enable */}
+      <PhotoProvider maskOpacity={0.6}>
+        <PhotoView src={props.src}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img {...props} alt={props.alt} />
+        </PhotoView>
+      </PhotoProvider>
+      {props.alt ? (
+        <figcaption className="text-gray-400 text-xs mt-2">
+          {props.alt}
+        </figcaption>
+      ) : null}
     </figure>
   )
 }

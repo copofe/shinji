@@ -11,7 +11,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from '::/components/ui/command'
+} from '::/components/ui'
 import { navMenus } from '::/nav'
 
 export function AppCommand() {
