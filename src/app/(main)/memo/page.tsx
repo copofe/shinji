@@ -30,7 +30,7 @@ export default async function Memo() {
             key={memo.id}
             className="p-4 mb-4 rounded-lg transition-all bg-background border hover:shadow"
           >
-            <div className="text-xs text-muted-foreground mb-2">
+            <div className="text-xs text-muted-foreground mb-3">
               {dayjs(memo.createdTs * 1000).format('YYYY-MM-DD hh:mm:ss')}
             </div>
             <div>{memo.content}</div>
