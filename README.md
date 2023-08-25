@@ -10,9 +10,3 @@ preview: [shinji.me](https://www.shinji.me)
 - Radix UI
 - Shadcn
 - Supabase
-
-.env
-```
-NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
-```

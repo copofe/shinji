@@ -12,7 +12,17 @@ export interface Memo {
   pinned: boolean
   creatorName: string
   creatorUsername: string
-  resourceList: any[]
+  resourceList: {
+    id: number
+    creatorId: number
+    createdTs: number
+    updatedTs: number
+    filename: string
+    externalLink: string
+    type: string
+    size: number
+    linkedMemoAmount: number
+  }[]
   relationList: any[]
 }
 
