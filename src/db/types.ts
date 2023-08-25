@@ -12,15 +12,15 @@ export interface Database {
       author: {
         Row: {
           id: string
-          nickname: string | null
+          nickname: string
         }
         Insert: {
           id: string
-          nickname?: string | null
+          nickname: string
         }
         Update: {
           id?: string
-          nickname?: string | null
+          nickname?: string
         }
         Relationships: [
           {
@@ -33,40 +33,40 @@ export interface Database {
       }
       post: {
         Row: {
-          authorId: string | null
+          authorId: string
           content: string
           cover: string | null
-          createdAt: string | null
+          createdAt: string
           excerpt: string | null
-          like: number | null
+          like: number
           published: boolean
-          slug: string | null
-          title: string | null
-          updatedAt: string | null
+          slug: string
+          title: string
+          updatedAt: string
         }
         Insert: {
-          authorId?: string | null
-          content?: string | null
+          authorId: string
+          content: string
           cover?: string | null
-          createdAt?: string | null
+          createdAt?: string
           excerpt?: string | null
-          like?: number | null
-          published: boolean
-          slug?: string
-          title?: string | null
-          updatedAt?: string | null
-        }
-        Update: {
-          authorId?: string | null
-          content?: string | null
-          cover?: string | null
-          createdAt?: string | null
-          excerpt?: string | null
-          like?: number | null
+          like?: number
           published?: boolean
           slug?: string
-          title?: string | null
-          updatedAt?: string | null
+          title: string
+          updatedAt?: string
+        }
+        Update: {
+          authorId?: string
+          content?: string
+          cover?: string | null
+          createdAt?: string
+          excerpt?: string | null
+          like?: number
+          published?: boolean
+          slug?: string
+          title?: string
+          updatedAt?: string
         }
         Relationships: [
           {
