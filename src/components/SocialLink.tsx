@@ -5,19 +5,17 @@ import React from 'react'
 
 import {
   type IconProps,
-  BilibiliIcon,
   GitHubIcon,
   MailIcon,
   TwitterIcon,
 } from '::/assets/icons'
 
 type IconType = (props: IconProps) => JSX.Element
-type Platform = 'github' | 'twitter' | 'bilibili' | 'mail'
+type Platform = 'github' | 'twitter' | 'mail'
 
 const iconMapper: { [key in Platform]: IconType } = {
   github: GitHubIcon,
   twitter: TwitterIcon,
-  bilibili: BilibiliIcon,
   mail: MailIcon
 }
 export function SocialLink({

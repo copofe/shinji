@@ -20,10 +20,6 @@ export default function Home() {
         <div className="flex [&>*]:mr-6 mt-4">
           <SocialLink platform="github" href="https://github.com/copofe" />
           <SocialLink platform="twitter" href="https://twitter.com/Shinji_Zl" />
-          <SocialLink
-            platform="bilibili"
-            href="https://space.bilibili.com/3273190"
-          />
           <SocialLink platform="mail" href="mailto:me@shinji.me" />
         </div>
       </div>
