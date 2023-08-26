@@ -2,6 +2,7 @@ import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
 import * as runtime from 'react/jsx-runtime'
 import { compile, run } from '@mdx-js/mdx'
+import remarkGfm from 'remark-gfm'
 import remarkUnwrapImages from 'remark-unwrap-images'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { BlogPostQuery, Database } from '::/db'
@@ -34,7 +35,7 @@ export default async function BlogPost({
     await compile(post.content, {
       outputFormat: 'function-body',
       development: false,
-      remarkPlugins: [remarkUnwrapImages],
+      remarkPlugins: [remarkUnwrapImages, remarkGfm],
     })
   )
 
