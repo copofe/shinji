@@ -88,7 +88,7 @@ body {
 }
 
 body {
-  background-image: url(/bg.png);
+  background-image: url(/bg.webp);
   background-repeat: no-repeat;
   background-position: center bottom;
   background-size: 100% auto;
@@ -97,6 +97,7 @@ body {
 @font-face {
   font-family: 'seaborn';
   src: url('/seaborn.woff') format('woff');
+  font-display: swap;
 }
 
 .seaborn {
