@@ -55,7 +55,7 @@ export default async function BlogPost({
           }}
         />
       </article>
-      <span className="my-12 text-secondary-foreground seaborn">· End ·</span>
+      <span className="my-12 text-secondary-foreground">•</span>
       <PostComment slug={params.slug} />
     </>
   )

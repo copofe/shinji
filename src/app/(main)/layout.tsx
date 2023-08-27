@@ -10,9 +10,9 @@ export default async function MainLayout({
   return (
     <>
       <header className="flex justify-between items-center flex-shrink-0 h-14 px-4 lg:px-12 sticky top-0 bg-background bg-opacity-40 z-50 backdrop-blur">
-        <div className="text-3xl font-semibold seaborn">
-          <Link href="/">S</Link>
-        </div>
+        <Link href="/" className="text-3xl font-semibold seaborn">
+          S
+        </Link>
         <nav className="flex items-center">
           {navMenus.map((menu) => {
             return (
