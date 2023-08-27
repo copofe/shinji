@@ -2,9 +2,9 @@
 'use client'
 
 import { PhotoProvider, PhotoView } from 'react-photo-view'
-import dayjs from 'dayjs'
-import { Memo } from './page'
 import 'react-photo-view/dist/react-photo-view.css'
+import { date } from '::/libs';
+import { Memo } from './page'
 
 const photoWidth = ['', '50%', '40%']
 
@@ -12,7 +12,7 @@ export default function MemoCard({ memo }: { memo: Memo }) {
   return (
     <div className="p-4 mb-4 rounded-lg transition-all bg-background border hover:shadow">
       <div className="text-xs text-muted-foreground mb-3">
-        {dayjs(memo.createdTs * 1000).format('YYYY-MM-DD HH:mm')}
+        {date.format(memo.createdTs * 1000)}
       </div>
       <div>{memo.content}</div>
       {memo.resourceList.length > 0 ? (
