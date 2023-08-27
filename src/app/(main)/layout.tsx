@@ -19,6 +19,7 @@ export default async function MainLayout({
               <Link
                 key={menu.href}
                 href={menu.href}
+                aria-label={menu.name}
                 className="lg:mx-8 mx-4 flex items-center"
               >
                 <menu.icon className="h-5 w-5" />

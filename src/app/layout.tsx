@@ -9,6 +9,8 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Shinji',
+  description: 'an experienced front-end developer\'s website',
+  keywords: 'front-end,gamer,shinji',
 }
 
 export default async function RootLayout({
