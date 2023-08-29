@@ -1,15 +1,23 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Analytics } from '@vercel/analytics/react'
-import { Inter } from 'next/font/google'
 import { ThemeProvider } from '::/components/ThemeProvider'
+import SEO from '::/seo'
 
-const inter = Inter({ subsets: ['latin'] })
-
+const { title, description } = SEO
 export const metadata: Metadata = {
-  title: 'Shinji',
-  description: 'an experienced front-end developer\'s website',
+  title,
+  description,
   keywords: 'front-end,gamer,shinji',
+  twitter: {
+    title,
+    description,
+  },
+  openGraph: {
+    type: 'website',
+    siteName: title,
+    title,
+    description,
+  },
 }
 
 export default async function RootLayout({
@@ -19,9 +27,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="zh-Hans-CN">
-      <body
-        className={`${inter.className} bg-background text-foreground flex min-h-screen flex-col items-stretch relative z-10`}
-      >
+      <body className="min-h-screen flex flex-col items-stretch relative z-10">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
           <footer className="flex-shrink-0 flex justify-center items-center py-4 text-sm text-muted-foreground">
@@ -29,7 +35,6 @@ export default async function RootLayout({
           </footer>
         </ThemeProvider>
       </body>
-      <Analytics />
     </html>
   )
 }

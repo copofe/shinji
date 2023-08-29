@@ -29,10 +29,10 @@ export interface Memo {
 const memosApi = process.env.MEMOS_API
 const openId = process.env.MEMOS_OPENID
 
+export const revalidate = 600
+
 export default async function Memo() {
-  const res = await fetch(`${memosApi}?openId=${openId}`, {
-    next: { revalidate: 3600 },
-  })
+  const res = await fetch(`${memosApi}?openId=${openId}`)
   const memos: Memo[] = await res.json()
 
   return (

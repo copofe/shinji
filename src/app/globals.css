@@ -35,11 +35,6 @@
     --ring: 0 0% 3.9%;
 
     --radius: 0.5rem;
-
-    --thunderbird: 353, 70%, 46%;
-    --zest: 16, 73%, 55%;
-    --gold: 38, 60%, 61%;
-    --bluewood: 216 44% 33%;
   }
 
   .dark {
@@ -79,19 +74,11 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image: url(/bg.webp);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% auto;
   }
-}
-
-html,
-body {
-  min-height: 100vh;
-}
-
-body {
-  background-image: url(/bg.webp);
-  background-repeat: no-repeat;
-  background-position: center bottom;
-  background-size: 100% auto;
 }
 
 @font-face {
