@@ -1,7 +1,10 @@
+/* eslint-disable @next/next/no-script-component-in-head */
 import './globals.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from '::/components/ThemeProvider'
 import SEO from '::/seo'
+import Head from 'next/head';
+import Script from 'next/script';
 
 const { title, description } = SEO
 export const metadata: Metadata = {
@@ -27,6 +30,7 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="zh-Hans-CN">
+      <Script async src="https://analytics.umami.is/script.js" data-website-id="e58f234f-3420-47a6-ad58-59403c68749b"></Script>
       <body className="min-h-screen flex flex-col items-stretch relative z-10">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
