@@ -10,7 +10,7 @@ const friends = [
 
 export default function Friend() {
   return (
-    <div className="flex justify-center p-4 lg:p-8">
+    <div className="flex justify-center p-4 md:p-8">
       {friends.map((friend) => {
         return (
           <a href={friend.link} key={friend.link} target='_blank' className='flex items-center'>

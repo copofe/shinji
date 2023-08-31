@@ -21,9 +21,9 @@ export default async function Post({
     .range(from, to)
     .order('createdAt', { ascending: false })
   return (
-    <div className="w-full lg:w-[42em]">
-      {posts.data?.map((post) => {
-        return <PostCard post={post} key={post.slug} />
+    <div className="w-full md:w-[42em]">
+      {posts.data?.map((post, i) => {
+        return <PostCard post={post} key={post.slug} index={i} />
       })}
     </div>
   )

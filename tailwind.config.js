@@ -23,7 +23,7 @@ module.exports = {
         background: 'hsla(var(--background) / var(--tw-bg-opacity))',
         foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
+          DEFAULT: 'hsl(var(--primary) / var(--tw-bg-opacity))',
           foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
@@ -31,15 +31,15 @@ module.exports = {
           foreground: 'hsl(var(--secondary-foreground))',
         },
         destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
+          DEFAULT: 'hsl(var(--destructive) / var(--tw-bg-opacity))',
           foreground: 'hsl(var(--destructive-foreground))',
         },
         muted: {
-          DEFAULT: 'hsl(var(--muted))',
+          DEFAULT: 'hsl(var(--muted) / var(--tw-bg-opacity))',
           foreground: 'hsl(var(--muted-foreground))',
         },
         accent: {
-          DEFAULT: 'hsl(var(--accent))',
+          DEFAULT: 'hsl(var(--accent) / var(--tw-bg-opacity))',
           foreground: 'hsl(var(--accent-foreground))',
         },
         popover: {

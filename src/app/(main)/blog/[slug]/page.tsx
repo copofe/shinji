@@ -1,23 +1,19 @@
 import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
+import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import * as runtime from 'react/jsx-runtime'
 import { compile, run } from '@mdx-js/mdx'
 import remarkGfm from 'remark-gfm'
 import remarkUnwrapImages from 'remark-unwrap-images'
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import { BlogPostQuery, Database } from '::/db'
-import PostMeta from '../../../../components/post/meta'
+import rehypePrettyCode from 'rehype-pretty-code'
 import { Fragment } from 'react'
 import Tweet from '::/components/Tweet'
 import Image from '::/components/post/image'
-import PostComment from '::/components/post/comment'
-import CodeBlock from '::/components/CodeBlock'
+import { BlogPostQuery, Database } from '::/db'
+import BlogPostComment from '::/components/post/comment'
+import PostContent from '::/components/post/content'
 
-export default async function BlogPost({
-  params,
-}: {
-  params: { slug: string }
-}) {
+export default async function Post({ params }: { params: { slug: string } }) {
   const supabase = createServerComponentClient<Database>({ cookies })
   const { data: post } = await supabase
     .from('post')
@@ -35,28 +31,28 @@ export default async function BlogPost({
     await compile(post.content, {
       outputFormat: 'function-body',
       development: false,
+      rehypePlugins: [
+        [rehypePrettyCode, { theme: 'nord', showLineNumbers: true }],
+      ],
       remarkPlugins: [remarkUnwrapImages, remarkGfm],
     })
   )
 
   const contentModule = await run(content, runtime)
-  const PostContent = contentModule ? contentModule.default : Fragment
+  const MdxContent = contentModule ? contentModule.default : Fragment
 
   return (
     <>
-      <article className="prose dark:prose-invert relative mt-8 lg:mt-12">
-        <h1>{post.title}</h1>
-        <PostMeta post={post} />
-        <PostContent
+      <PostContent post={post}>
+        <MdxContent
           components={{
             img: Image,
             Tweet,
-            pre: CodeBlock,
           }}
         />
-      </article>
+      </PostContent>
       <span className="my-12 text-secondary-foreground">•</span>
-      <PostComment slug={params.slug} />
+      <BlogPostComment slug={params.slug} />
     </>
   )
 }

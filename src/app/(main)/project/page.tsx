@@ -13,14 +13,14 @@ const projects = [
 
 export default async function Project() {
   return (
-    <div className="flex flex-col items-center px-4 lg:px-8">
-      <div className="w-full lg:max-w-[72em] py-8 lg:py-16">
+    <div className="flex flex-col items-center px-4 md:px-8">
+      <div className="w-full md:max-w-[72em] py-8 md:py-16">
         <div className="text-2xl font-semibold mb-4">我的一些小项目</div>
         <div className="mb-16 text-base">
           一些是为了学习，一些是纯粹的 just for fun，
           但大多数都放不上台面……这里简单放几个没弃坑的。
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
           {projects.map((project) => {
             return (
               <div key={project.name} className="mb-8">
