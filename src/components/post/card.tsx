@@ -8,8 +8,8 @@ import PostMeta from './meta'
 export default function PostCard({ post, index }: { post: Post, index: number }) {
   return (
     <motion.div
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
       transition={{ delay: 0.1 * index }}
       className="py-8 md:py-12"
     >
