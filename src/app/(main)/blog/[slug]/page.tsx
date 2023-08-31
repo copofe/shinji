@@ -12,7 +12,7 @@ import Image from '::/components/post/image'
 import { BlogPostQuery, Database } from '::/db'
 import BlogPostComment from '::/components/post/comment'
 import PostContent from '::/components/post/content'
-import 'shiki/themes/nord.json'
+import codeTheme from '::/assets/code-theme'
 
 export default async function Post({ params }: { params: { slug: string } }) {
   const supabase = createServerComponentClient<Database>({ cookies })
@@ -33,7 +33,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
       outputFormat: 'function-body',
       development: false,
       rehypePlugins: [
-        [rehypePrettyCode, { theme: 'nord', showLineNumbers: true }],
+        [rehypePrettyCode, { theme: codeTheme }],
       ],
       remarkPlugins: [remarkUnwrapImages, remarkGfm],
     })
