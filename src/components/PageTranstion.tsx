@@ -21,8 +21,7 @@ export default function PageTranstion({
       initial="hidden"
       animate="enter"
       exit="exit"
-      transition={{ easings: 'easeIn' }}
-      className={`flex-1 flex flex-col self-center bg-background text-foreground w-[100vw] md:w-[70vw] rounded-3xl ${className}`}
+      className={`flex-1 flex flex-col self-center ${className}`}
     >
       {children}
     </motion.div>

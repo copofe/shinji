@@ -1,12 +1,9 @@
-'use client'
-
 import './globals.css'
 import './prism.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from '::/components/ThemeProvider'
 import SEO from '::/seo'
 import Script from 'next/script'
-import { AnimatePresence } from 'framer-motion'
 
 const { title, description } = SEO
 export const metadata: Metadata = {
@@ -39,7 +36,7 @@ export default function RootLayout({
       ></Script>
       <body className="min-h-screen flex flex-col items-stretch relative z-10">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <AnimatePresence>{children}</AnimatePresence>
+          {children}
           <footer className="flex-shrink-0 flex justify-center items-center py-4 text-sm text-muted-foreground">
             {new Date().getFullYear()} © Shinji
           </footer>
