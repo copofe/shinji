@@ -1,9 +1,6 @@
-import { ThemeToggle } from '::/components/ThemeToggle'
-import Link from 'next/link'
-import { navMenus } from '::/nav'
 import Header from '::/components/Header'
 
-export default async function MainLayout({
+export default function MainLayout({
   children,
 }: {
   children: React.ReactNode
@@ -11,7 +8,9 @@ export default async function MainLayout({
   return (
     <>
       <Header />
-      <main className="flex-1 flex flex-col text-sm">{children}</main>
+      <main className="flex-1 flex flex-col">
+        {children}
+      </main>
     </>
   )
 }

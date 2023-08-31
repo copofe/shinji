@@ -1,3 +1,5 @@
+import PageTranstion from '::/components/PageTranstion'
+
 const projects = [
   {
     name: 'Rubbing',
@@ -13,7 +15,7 @@ const projects = [
 
 export default async function Project() {
   return (
-    <div className="flex flex-col items-center px-4 md:px-8">
+    <PageTranstion className="items-center px-4 md:px-8">
       <div className="w-full md:max-w-[72em] py-8 md:py-16">
         <div className="text-2xl font-semibold mb-4">我的一些小项目</div>
         <div className="mb-16 text-base">
@@ -41,6 +43,6 @@ export default async function Project() {
           })}
         </div>
       </div>
-    </div>
+    </PageTranstion>
   )
 }

@@ -1,3 +1,4 @@
+import PageTranstion from '::/components/PageTranstion'
 import MemoCard from './MemoCard'
 
 export interface Memo {
@@ -36,10 +37,12 @@ export default async function Memo() {
   const memos: Memo[] = await res.json()
 
   return (
-    <div className="flex-1 self-center flex items-stretch flex-col w-full p-2 md:p-0 md:w-[42rem] mt-8 md:mt-12">
-      {memos.map((memo) => {
-        return <MemoCard key={memo.id} memo={memo} />
-      })}
-    </div>
+    <PageTranstion className="items-center">
+      <div className="p-2 md:p-4">
+        {memos.map((memo) => {
+          return <MemoCard key={memo.id} memo={memo} />
+        })}
+      </div>
+    </PageTranstion>
   )
 }

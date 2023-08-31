@@ -10,7 +10,7 @@ const photoWidth = ['', '50%', '40%']
 
 export default function MemoCard({ memo }: { memo: Memo }) {
   return (
-    <div className="p-4 mb-4 rounded-lg transition-all bg-background border hover:shadow">
+    <div className="p-4 mb-4 border-b last:border-0">
       <div className="text-xs text-muted-foreground mb-3">
         {date.format(memo.createdTs * 1000)}
       </div>

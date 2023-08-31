@@ -1,3 +1,4 @@
+import PageTranstion from '::/components/PageTranstion'
 import Image from 'next/image'
 
 const friends = [
@@ -10,15 +11,26 @@ const friends = [
 
 export default function Friend() {
   return (
-    <div className="flex justify-center p-4 md:p-8">
+    <PageTranstion className="p-4 md:p-8 items-center">
       {friends.map((friend) => {
         return (
-          <a href={friend.link} key={friend.link} target='_blank' className='flex items-center'>
-            <Image src={friend.favicon} width={64} height={64} alt={friend.name} className='mr-2' />
+          <a
+            href={friend.link}
+            key={friend.link}
+            target="_blank"
+            className="flex items-center"
+          >
+            <Image
+              src={friend.favicon}
+              width={64}
+              height={64}
+              alt={friend.name}
+              className="mr-2"
+            />
             <span>{friend.name}</span>
           </a>
         )
       })}
-    </div>
+    </PageTranstion>
   )
 }
