@@ -5,21 +5,13 @@ import * as runtime from 'react/jsx-runtime'
 import { compile, run } from '@mdx-js/mdx'
 import remarkGfm from 'remark-gfm'
 import remarkUnwrapImages from 'remark-unwrap-images'
-import rehypePrettyCode from 'rehype-pretty-code'
+import rehypePrism from '@mapbox/rehype-prism'
 import { Fragment } from 'react'
 import Tweet from '::/components/Tweet'
 import Image from '::/components/post/image'
 import { BlogPostQuery, Database } from '::/db'
 import BlogPostComment from '::/components/post/comment'
 import PostContent from '::/components/post/content'
-import {
-  BUNDLED_LANGUAGES,
-  HighlighterOptions,
-  getHighlighter,
-  setCDN,
-} from 'shiki'
-
-setCDN('https://unpkg.com/shiki/')
 
 export default async function Post({ params }: { params: { slug: string } }) {
   const supabase = createServerComponentClient<Database>({ cookies })
@@ -39,19 +31,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
     await compile(post.content, {
       outputFormat: 'function-body',
       development: false,
-      rehypePlugins: [
-        [
-          rehypePrettyCode,
-          {
-            theme: 'nord',
-            getHighlighter: (options: HighlighterOptions) =>
-              getHighlighter({
-                ...options,
-                langs: [...BUNDLED_LANGUAGES],
-              }),
-          },
-        ],
-      ],
+      rehypePlugins: [rehypePrism],
       remarkPlugins: [remarkUnwrapImages, remarkGfm],
     })
   )

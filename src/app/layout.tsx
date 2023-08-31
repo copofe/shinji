@@ -1,9 +1,8 @@
-/* eslint-disable @next/next/no-script-component-in-head */
 import './globals.css'
+import './prism.css'
 import type { Metadata } from 'next'
 import { ThemeProvider } from '::/components/ThemeProvider'
 import SEO from '::/seo'
-import Head from 'next/head';
 import Script from 'next/script';
 
 const { title, description } = SEO
