@@ -41,10 +41,9 @@ export default async function Post({ params }: { params: { slug: string } }) {
               getHighlighter({
                 ...options,
                 paths: {
-                  themes: 'https://cdn.jsdelivr.net/npm/shiki@latest/themes',
-                  wasm: 'https://cdn.jsdelivr.net/npm/shiki@latest/dist',
-                  languages:
-                    'https://cdn.jsdelivr.net/npm/shiki@latest/languages',
+                  themes: 'themes',
+                  wasm: 'dist',
+                  languages: 'languages',
                 },
                 langs: [...BUNDLED_LANGUAGES],
               }),
