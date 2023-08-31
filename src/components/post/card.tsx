@@ -10,7 +10,7 @@ export default function PostCard({ post, index }: { post: Post, index: number })
     <motion.div
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 0.1 * index, duration: 1 }}
+      transition={{ delay: 0.1 * index }}
       className="py-8 md:py-12"
     >
       <Link href={`/blog/${post.slug}`}>

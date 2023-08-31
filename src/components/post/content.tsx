@@ -15,7 +15,6 @@ export default function PostContent({
     <motion.article
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
       className="prose dark:prose-invert relative mt-8 md:mt-12"
     >
       <h1>{post.title}</h1>
