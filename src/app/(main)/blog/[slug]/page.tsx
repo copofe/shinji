@@ -12,6 +12,14 @@ import Image from '::/components/post/image'
 import { BlogPostQuery, Database } from '::/db'
 import BlogPostComment from '::/components/post/comment'
 import PostContent from '::/components/post/content'
+import {
+  BUNDLED_LANGUAGES,
+  HighlighterOptions,
+  getHighlighter,
+  setCDN,
+} from 'shiki'
+
+setCDN('https://unpkg.com/shiki/')
 
 export default async function Post({ params }: { params: { slug: string } }) {
   const supabase = createServerComponentClient<Database>({ cookies })
@@ -32,7 +40,17 @@ export default async function Post({ params }: { params: { slug: string } }) {
       outputFormat: 'function-body',
       development: false,
       rehypePlugins: [
-        [rehypePrettyCode, { theme: 'nord' }],
+        [
+          rehypePrettyCode,
+          {
+            theme: 'nord',
+            getHighlighter: (options: HighlighterOptions) =>
+              getHighlighter({
+                ...options,
+                langs: [...BUNDLED_LANGUAGES],
+              }),
+          },
+        ],
       ],
       remarkPlugins: [remarkUnwrapImages, remarkGfm],
     })
