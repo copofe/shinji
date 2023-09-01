@@ -4,8 +4,10 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { navMenus } from '::/nav'
 import { ThemeToggle } from './ThemeToggle'
+import { usePathname } from 'next/navigation'
 
 export default function Header() {
+  const path = usePathname()
   return (
     <motion.header
       initial={{ opacity: 0 }}
@@ -19,17 +21,18 @@ export default function Header() {
       <nav className="flex items-center">
         {navMenus.map((menu) => {
           return (
-            <Link
-              key={menu.href}
-              href={menu.href}
-              aria-label={menu.name}
-              className="md:mx-8 mx-2 p-2 flex-1 flex items-center"
-            >
-              <menu.icon className="h-5 w-5" />
-              <div className="ml-2 pr-1 hidden md:block text-sm">
-                {menu.name}
-              </div>
-            </Link>
+            <div key={menu.href} className="md:mx-8 mx-2 flex-1 hover-highlight">
+              <Link
+                href={menu.href}
+                aria-label={menu.name}
+                className='flex items-center p-2 relative z-20'
+              >
+                <menu.icon className="h-5 w-5" />
+                <div className="ml-2 pr-1 hidden md:block text-sm">
+                  {menu.name.toLocaleUpperCase()}
+                </div>
+              </Link>
+            </div>
           )
         })}
       </nav>

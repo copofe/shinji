@@ -10,8 +10,10 @@ export default function MainLayout({
 }) {
   return (
     <AnimatePresence>
-      <Header />
-      <main className="flex-1 flex flex-col w-screen">{children}</main>
+      <Header key="header" />
+      <main key="main" className="flex-1 flex flex-col">
+        {children}
+      </main>
     </AnimatePresence>
   )
 }

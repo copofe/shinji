@@ -5,7 +5,13 @@ import { motion } from 'framer-motion'
 import { Post } from '::/types'
 import PostMeta from './meta'
 
-export default function PostCard({ post, index }: { post: Post, index: number }) {
+export default function PostCard({
+  post,
+  index,
+}: {
+  post: Post
+  index: number
+}) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -13,9 +19,9 @@ export default function PostCard({ post, index }: { post: Post, index: number })
       transition={{ delay: 0.1 * index }}
       className="py-6 md:py-10 prose dark:prose-invert"
     >
-      <Link href={`/blog/${post.slug}`} className='no-underline'>
-        <h2 className='mt-0'>{post.title}</h2>
-        <p>{post.excerpt}</p>
+      <Link href={`/blog/${post.slug}`} className="no-underline">
+        <h2 className="mt-0">{post.title}</h2>
+        <p className="mb-3">{post.excerpt}</p>
       </Link>
       <PostMeta post={post} />
     </motion.div>

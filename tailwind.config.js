@@ -20,6 +20,7 @@ module.exports = {
         border: 'hsla(var(--border) / <alpha-value>)',
         input: 'hsla(var(--input) / <alpha-value>)',
         ring: 'hsla(var(--ring) / <alpha-value>)',
+        highlight: 'hsla(var(--highlight) / <alpha-value>)',
         background: 'hsla(var(--background) / <alpha-value>)',
         foreground: 'hsla(var(--foreground) / <alpha-value>)',
         primary: {

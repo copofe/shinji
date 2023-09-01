@@ -5,10 +5,10 @@ import { Post } from '::/types'
 
 export default function PostMeta({ post }: { post: Post }) {
   return (
-    <p className="text-muted-foreground text-xs">
+    <small className="text-muted-foreground">
       <time>{date.format(post.createdAt)}</time>
-      <span className="mx-2">·</span>
+      <span className="px-2">·</span>
       <span>{post.author?.nickname}</span>
-    </p>
+    </small>
   )
 }

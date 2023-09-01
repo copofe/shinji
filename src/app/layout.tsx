@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="zh-Hans-CN">
+    <html lang="zh-CN">
       <Script
         async
         src="https://analytics.umami.is/script.js"
