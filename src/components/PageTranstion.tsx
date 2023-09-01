@@ -3,9 +3,9 @@
 import { motion } from 'framer-motion'
 
 const variants = {
-  hidden: { opacity: 0, x: 0, y: 100 },
-  enter: { opacity: 1, x: 0, y: 0 },
-  exit: { opacity: 0, x: 0, y: 100 },
+  hidden: { opacity: 0 },
+  enter: { opacity: 1 },
+  exit: { opacity: 0 },
 }
 
 export default function PageTranstion({
@@ -21,7 +21,7 @@ export default function PageTranstion({
       initial="hidden"
       animate="enter"
       exit="exit"
-      className={`flex-1 flex flex-col self-center ${className}`}
+      className={`flex-1 flex flex-col w-full ${className}`}
     >
       {children}
     </motion.div>
