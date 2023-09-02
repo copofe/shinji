@@ -12,8 +12,13 @@ export default function Introduction() {
             Professional Developer
           </div>
         </div>
-        <div className="overflow-hidden flex justify-end items-baseline">
-          <motion.div initial={{ opacity: 0, x: '15%' }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.25, ease: 'linear', duration: 0.75 }} className="text-xl font-thin mr-4 text-gray-400">
+        <div className="overflow-hidden flex justify-end items-baseline my-8">
+          <motion.div
+            initial={{ opacity: 0, x: '15%' }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.25, ease: 'linear', duration: 0.75 }}
+            className="text-xl font-thin mr-4 text-gray-400"
+          >
             特に「侘び寂び」，原始的な美意識
           </motion.div>
           <div className="text-6xl md:text-9xl !leading-tight move-up">
@@ -24,7 +29,14 @@ export default function Introduction() {
           <div className="text-6xl md:text-9xl !leading-tight move-up mr-4">
             Also Gamer
           </div>
-          <motion.div initial={{ opacity: 0, x: '-15%' }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.25, ease: 'linear', duration: 0.75 }} className="text-xl font-thin text-gray-400">嗨，玩游戏的都是朋友</motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: '-15%' }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.25, ease: 'linear', duration: 0.75 }}
+            className="text-xl font-thin text-gray-400"
+          >
+            嗨，玩游戏的都是朋友
+          </motion.div>
         </div>
       </div>
       <div className="overflow-hidden flex justify-center my-4">
