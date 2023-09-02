@@ -22,19 +22,19 @@ export default function Header() {
         S
       </Link>
       <div className="flex items-center">
-        <nav className="flex items-stretch md:mr-8 text-sm md:text-lg">
+        <nav className="flex items-stretch mr-1 md:mr-6 text-sm md:text-lg">
           {navMenus.map((menu) => {
             return (
               <div
                 key={menu.href}
-                className="md:mx-6 mx-1 flex-1"
+                className="md:mr-12 mr-2 flex-1"
                 onMouseEnter={() => setCursorAnimate('nav')}
                 onMouseLeave={() => setCursorAnimate('default')}
               >
                 <Link
                   href={menu.href}
                   aria-label={menu.name}
-                  className="flex items-center p-2 relative z-20"
+                  className="flex items-center p-2"
                 >
                   {menu.name.toLocaleUpperCase()}
                 </Link>
