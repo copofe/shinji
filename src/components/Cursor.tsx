@@ -1,6 +1,6 @@
 'use client'
 
-import { useCursor } from '::/hooks/useCursor'
+import { useCursor } from '::/hooks/useCursor';
 import { motion } from 'framer-motion'
 
 const spring = {
@@ -8,19 +8,19 @@ const spring = {
 }
 
 export default function Cursor({
-  refEle,
+  refEle
 }: {
   refEle: React.MutableRefObject<null>
 }) {
-  const { isTouch, variants, cursorVariant } = useCursor(refEle)
-  return isTouch ? null : (
+  const { variants, cursorVariant } = useCursor(refEle)
+  return (
     <motion.div
       variants={variants}
-      className="fixed mix-blend-difference pointer-events-none z-[10000] will-change-auto"
+      className="fixed mix-blend-difference pointer-events-none z-[10000] will-change-auto hidden lg:block"
       animate={cursorVariant}
       transition={spring}
     >
-      <div className="w-full h-full bg-white -translate-x-1/2 -translate-y-1/2 rounded-full"></div>
+      <div className='w-full h-full bg-white -translate-x-1/2 -translate-y-1/2 rounded-full'></div>
     </motion.div>
   )
 }
