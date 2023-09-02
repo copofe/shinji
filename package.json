@@ -11,6 +11,7 @@
   "dependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
     "@mdx-js/mdx": "^2.3.0",
+    "@react-hook/mouse-position": "^4.1.3",
     "@supabase/auth-helpers-nextjs": "^0.7.3",
     "@supabase/supabase-js": "^2.29.0",
     "@types/node": "20.4.1",
@@ -25,6 +26,7 @@
     "eslint-config-next": "13.4.9",
     "framer-motion": "^10.16.2",
     "lucide-react": "^0.263.1",
+    "mitt": "^3.0.1",
     "next": "13.4.9",
     "next-themes": "^0.2.1",
     "postcss": "8.4.25",

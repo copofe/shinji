@@ -30,8 +30,6 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --highlight: 53 98% 77%;
-
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
@@ -64,8 +62,6 @@
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --highlight: 41 96% 40%;
-
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
     --ring: 0 0% 83.1%;
@@ -75,13 +71,14 @@
 @layer base {
   * {
     @apply border-border;
+    cursor: none !important;
+  }
+  ::selection {
+    @apply bg-foreground text-background;
+    text-shadow: none;
   }
   body {
     @apply bg-background text-foreground relative;
-    background-image: url(/bg.webp);
-    background-repeat: no-repeat;
-    background-position: center bottom;
-    background-size: 100% auto;
   }
 }
 
@@ -101,41 +98,15 @@ article {
   width: 100%;
 }
 
-.cursor {
-  animation: 1.2s cursor-flicker infinite;
-}
-@keyframes cursor-flicker {
-  from {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
+@keyframes moveUp {
+  0% {
+    transform: translateY(100%);
   }
 
   100% {
-    opacity: 0;
+    transform: translateY(0);
   }
 }
-
-article a,
-.hover-highlight {
-  @apply relative z-20;
-}
-
-article a::after,
-.hover-highlight::after {
-  content: '';
-  transition: all ease-in-out 0.2s;
-  transform: translateY(50%) rotate(-1.66deg);
-  @apply block w-0 h-5 absolute -left-1 bottom-1/2 z-10 blur-[2px] bg-highlight;
-}
-
-article a::after {
-  z-index: -1;
-}
-
-article a:hover::after,
-.hover-highlight:hover::after {
-  width: calc(100% + 8px);
+.index-title {
+  animation: moveUp 1.75s cubic-bezier(.73,.33,.33,.97) 0.25s 1 normal both;
 }

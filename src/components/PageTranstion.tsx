@@ -21,7 +21,7 @@ export default function PageTranstion({
       initial="hidden"
       animate="enter"
       exit="exit"
-      className={`flex-1 flex flex-col w-full ${className}`}
+      className={`flex-1 flex flex-col w-full bg-background ${className}`}
     >
       {children}
     </motion.div>
