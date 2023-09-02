@@ -16,7 +16,10 @@ const useCursor = (ref: React.MutableRefObject<null>) => {
 
   const [x, setX] = useState(0)
   const [y, setY] = useState(0)
+  const [isTouch, setIsTouch] = useState(true)
   useEffect(() => {
+    setIsTouch(mouse.isTouch)
+
     if (mouse.clientX !== null) {
       setX(mouse.clientX)
     }
@@ -58,6 +61,7 @@ const useCursor = (ref: React.MutableRefObject<null>) => {
   })
 
   return {
+    isTouch,
     variants,
     cursorVariant,
     setCursorVariant
