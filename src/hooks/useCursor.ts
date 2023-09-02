@@ -9,8 +9,8 @@ const cursorEmitter = mitt<{
 
 const setCursorAnimate = (v: string) => cursorEmitter.emit('setCursor', v)
 
-const useCursor = (ref: React.MutableRefObject<null>) => {
-  const mouse = useMouse(ref, {
+const useCursor = () => {
+  const mouse = useMouse(document.body, {
     fps: 60
   })
 
