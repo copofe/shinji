@@ -7,12 +7,16 @@ const spring = {
   type: false,
 }
 
-export default function Cursor() {
-  const { variants, cursorVariant } = useCursor()
+export default function Cursor({
+  refEle
+}: {
+  refEle: React.MutableRefObject<null>
+}) {
+  const { variants, cursorVariant } = useCursor(refEle)
   return (
     <motion.div
       variants={variants}
-      className="fixed mix-blend-difference pointer-events-none z-[10000] will-change-auto sm:hidden"
+      className="fixed mix-blend-difference pointer-events-none z-[10000] will-change-auto"
       animate={cursorVariant}
       transition={spring}
     >

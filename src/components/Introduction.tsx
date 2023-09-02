@@ -11,7 +11,7 @@ export default function Introduction() {
       <div className="p-4 md:px-40 md:py-20 flex-1 flex flex-col justify-center items-stretch self-stretch">
         <div className="overflow-hidden">
           <div className="text-4xl md:text-9xl !leading-tight index-title">
-            An FE Developer
+            Professional Developer
           </div>
         </div>
         <div className="overflow-hidden text-right">

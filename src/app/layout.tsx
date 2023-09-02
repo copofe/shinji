@@ -5,8 +5,6 @@ import Script from 'next/script'
 import { Barlow } from 'next/font/google'
 import { ThemeProvider } from '::/components/ThemeProvider'
 import SEO from '::/seo'
-import Cursor from '::/components/Cursor'
-import Footer from '::/components/Footer';
 
 const barlow = Barlow({ subsets: ['latin'], weight: ['400'] })
 
@@ -40,12 +38,10 @@ export default function RootLayout({
         data-website-id="e58f234f-3420-47a6-ad58-59403c68749b"
       ></Script>
       <body
-        className={`min-h-screen flex flex-col items-stretch relative z-10 ${barlow.className}`}
+        className={`min-h-screen flex flex-col ${barlow.className}`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
-          <Cursor  />
-          <Footer />
         </ThemeProvider>
       </body>
     </html>
