@@ -1,3 +1,5 @@
+'use client'
+
 import useMouse from '@react-hook/mouse-position';
 import { AnimationProps } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react'
