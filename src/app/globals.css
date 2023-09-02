@@ -107,6 +107,6 @@ article {
     transform: translateY(0);
   }
 }
-.index-title {
+.move-up {
   animation: moveUp 1.75s cubic-bezier(.73,.33,.33,.97) 0.25s 1 normal both;
 }
