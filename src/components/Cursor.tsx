@@ -16,7 +16,7 @@ export default function Cursor({
   return (
     <motion.div
       variants={variants}
-      className="fixed mix-blend-difference pointer-events-none z-[10000] will-change-auto !hidden lg:block"
+      className="fixed mix-blend-difference pointer-events-none z-[10000] will-change-auto !hidden !lg:block"
       animate={cursorVariant}
       transition={spring}
     >
