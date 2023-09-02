@@ -1,5 +1,3 @@
-'use client'
-
 import useMouse from '@react-hook/mouse-position';
 import { AnimationProps } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react'
@@ -12,7 +10,7 @@ const cursorEmitter = mitt<{
 const setCursorAnimate = (v: string) => cursorEmitter.emit('setCursor', v)
 
 const useCursor = () => {
-  const mouse = useMouse(document.body, {
+  const mouse = useMouse(null, {
     fps: 60
   })
 
