@@ -25,7 +25,7 @@ export default function Friend() {
               width={64}
               height={64}
               alt={friend.name}
-              className="mr-2"
+              className="mr-2 rounded-full"
             />
             <span>{friend.name}</span>
           </a>
