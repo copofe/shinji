@@ -14,15 +14,19 @@ export default function Introduction() {
             Professional Developer
           </div>
         </div>
-        <div className="overflow-hidden text-right">
+        <div className="overflow-hidden flex justify-end items-baseline">
+          <div className="text-xl font-thin mr-4">
+            特に「侘び寂び」，原始的な美意識
+          </div>
           <div className="text-6xl md:text-9xl !leading-tight index-title">
             Like Design
           </div>
         </div>
-        <div className="overflow-hidden text-center">
-          <div className="text-6xl md:text-9xl !leading-tight index-title">
+        <div className="overflow-hidden flex justify-center items-baseline">
+          <div className="text-6xl md:text-9xl !leading-tight index-title mr-4">
             Also Gamer
           </div>
+          <div className="text-xl font-thin">玩游戏的都是朋友</div>
         </div>
       </div>
       <div className="overflow-hidden flex justify-center my-4">
