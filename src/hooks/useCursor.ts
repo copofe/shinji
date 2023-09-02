@@ -10,7 +10,7 @@ const cursorEmitter = mitt<{
 const setCursorAnimate = (v: string) => cursorEmitter.emit('setCursor', v)
 
 const useCursor = () => {
-  const mouse = useMouse(document?.body || null, {
+  const mouse = useMouse(document ? document.body : null, {
     fps: 60
   })
 
