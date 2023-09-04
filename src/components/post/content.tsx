@@ -13,7 +13,7 @@ export default function PostContent({
 }) {
   return (
     <>
-      {post.cover ? <motion.img layoutId={post.slug} src={post.cover} alt={post.title} /> : null}
+      {post.cover ? <img src={post.cover} alt={post.title} /> : null}
       <motion.article
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

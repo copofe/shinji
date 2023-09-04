@@ -21,15 +21,14 @@ export default function PostCard({
     >
       <Link href={`/blog/${post.slug}`} className="no-underline">
         {post.cover ? (
-          <motion.img
-            layoutId={post.slug}
+          <img
             src={post.cover}
             alt={post.title}
             className="my-0"
           />
         ) : null}
-        <h2 className={post.cover ? 'my-5' : 'mb-5 mt-0'}>{post.title}</h2>
-        <p className="mb-3">{post.excerpt}</p>
+        <h2 className={post.cover ? 'my-3' : 'mb-3 mt-0'}>{post.title}</h2>
+        <p className="mb-2">{post.excerpt}</p>
       </Link>
       <PostMeta post={post} />
     </motion.div>
