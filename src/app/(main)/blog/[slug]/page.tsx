@@ -12,8 +12,42 @@ import Image from '::/components/post/image'
 import { BlogPostQuery, Database } from '::/db'
 import BlogPostComment from '::/components/post/comment'
 import PostContent from '::/components/post/content'
+import SEO from '::/seo'
 
-export default async function Post({ params }: { params: { slug: string } }) {
+interface PostProps {
+  params: { slug: string }
+}
+
+export async function generateMetadata({ params }: PostProps) {
+  const supabase = createServerComponentClient<Database>({ cookies })
+  const { data: post } = await supabase
+    .from('post')
+    .select(BlogPostQuery)
+    .eq('published', true)
+    .eq('slug', params.slug)
+    .limit(1)
+    .maybeSingle()
+
+  const title = post?.title + ' - ' + SEO.title
+  const description = post?.excerpt
+  return {
+    title,
+    description,
+    keywords: 'front-end,gamer,shinji',
+    twitter: {
+      title,
+      description,
+    },
+    openGraph: {
+      type: 'website',
+      siteName: title,
+      title,
+      description,
+    },
+  }
+}
+
+export default async function Post({ params }: PostProps) {
   const supabase = createServerComponentClient<Database>({ cookies })
   const { data: post } = await supabase
     .from('post')

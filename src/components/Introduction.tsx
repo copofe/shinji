@@ -17,7 +17,7 @@ export default function Introduction() {
             initial={{ opacity: 0, x: '15%' }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.25, ease: 'linear', duration: 0.75 }}
-            className="text-base md:text-xl font-thin mr-4 text-gray-400"
+            className="text-base md:text-xl text-right font-thin mr-4 text-gray-400"
           >
             特に「侘び寂び」，原始的な美意識
           </motion.div>
@@ -27,7 +27,7 @@ export default function Introduction() {
         </div>
         <div className="overflow-hidden flex justify-center items-baseline">
           <div className="text-6xl md:text-9xl !leading-tight move-up mr-4">
-            Also Gamer
+            <span>Also Gamer</span>
           </div>
           <motion.div
             initial={{ opacity: 0, x: '-15%' }}
