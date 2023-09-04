@@ -20,7 +20,15 @@ export default function PostCard({
       className="py-6 md:py-10 prose dark:prose-invert"
     >
       <Link href={`/blog/${post.slug}`} className="no-underline">
-        <h2 className="mt-0">{post.title}</h2>
+        {post.cover ? (
+          <motion.img
+            layoutId={post.slug}
+            src={post.cover}
+            alt={post.title}
+            className="my-0"
+          />
+        ) : null}
+        <h2 className={post.cover ? 'my-5' : 'mb-5 mt-0'}>{post.title}</h2>
         <p className="mb-3">{post.excerpt}</p>
       </Link>
       <PostMeta post={post} />
