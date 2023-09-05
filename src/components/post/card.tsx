@@ -24,7 +24,7 @@ export default function PostCard({
           <img
             src={post.cover}
             alt={post.title}
-            className="my-0"
+            className="my-0 rounded"
           />
         ) : null}
         <h2 className={post.cover ? 'my-3' : 'mb-3 mt-0'}>{post.title}</h2>

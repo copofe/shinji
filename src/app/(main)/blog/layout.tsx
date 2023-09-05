@@ -6,7 +6,7 @@ export default function BlogLayout({
   children: React.ReactNode
 }) {
   return (
-    <PageTranstion className="p-4 md:p-8 items-center">
+    <PageTranstion>
       {children}
     </PageTranstion>
   )

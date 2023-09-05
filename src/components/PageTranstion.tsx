@@ -13,7 +13,7 @@ export default function PageTranstion({
   className,
 }: {
   children: React.ReactNode
-  className: string
+  className?: string
 }) {
   return (
     <motion.div
