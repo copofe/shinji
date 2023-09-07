@@ -16,7 +16,7 @@ export default function MainLayout({
     <AnimatePresence>
       <div className="flex-1 flex flex-col items-stretch relative z-10" ref={ref}>
         <Header key="header" />
-        <main key="main" className="flex-1 flex flex-col">
+        <main key="main" className="flex-1 flex flex-col w-full">
           {children}
         </main>
         <Footer />
