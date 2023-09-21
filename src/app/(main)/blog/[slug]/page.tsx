@@ -83,7 +83,6 @@ export default async function Post({ params }: PostProps) {
           }}
         />
       </PostContent>
-      <span className="my-12 text-secondary-foreground">•</span>
       <BlogPostComment slug={params.slug} />
     </>
   )

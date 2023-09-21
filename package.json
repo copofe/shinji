@@ -27,7 +27,7 @@
     "framer-motion": "^10.16.2",
     "lucide-react": "^0.263.1",
     "mitt": "^3.0.1",
-    "next": "13.4.9",
+    "next": "^13.5.2",
     "next-themes": "^0.2.1",
     "postcss": "8.4.25",
     "react": "18.2.0",
