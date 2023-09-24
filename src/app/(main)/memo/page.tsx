@@ -38,7 +38,7 @@ export default async function Memo() {
 
   return (
     <PageTranstion className="items-center">
-      <div className="p-2 md:p-4">
+      <div className="p-2 md:p-4 w-full md:w-[42em]">
         {memos.map((memo) => {
           return <MemoCard key={memo.id} memo={memo} />
         })}
