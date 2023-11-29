@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { navMenus } from '::/nav'
 import { ThemeToggle } from './ThemeToggle'
-import { setCursorAnimate } from '::/hooks/useCursor'
 
 export default function Header() {
   return (
@@ -16,8 +15,6 @@ export default function Header() {
       <Link
         href="/"
         className="text-4xl font-semibold seaborn"
-        onMouseEnter={() => setCursorAnimate('nav')}
-        onMouseLeave={() => setCursorAnimate('default')}
       >
         S
       </Link>
@@ -28,8 +25,6 @@ export default function Header() {
               <div
                 key={menu.href}
                 className="md:mr-12 mr-2 flex-1"
-                onMouseEnter={() => setCursorAnimate('nav')}
-                onMouseLeave={() => setCursorAnimate('default')}
               >
                 <Link
                   href={menu.href}
@@ -42,10 +37,7 @@ export default function Header() {
             )
           })}
         </nav>
-        <div
-          onMouseEnter={() => setCursorAnimate('nav')}
-          onMouseLeave={() => setCursorAnimate('default')}
-        >
+        <div>
           <ThemeToggle />
         </div>
       </div>

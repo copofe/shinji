@@ -71,7 +71,6 @@
 @layer base {
   * {
     @apply border-border;
-    cursor: none !important;
   }
   ::selection {
     @apply bg-foreground text-background;
