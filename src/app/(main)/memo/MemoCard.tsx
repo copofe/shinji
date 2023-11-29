@@ -1,6 +1,5 @@
 import 'react-photo-view/dist/react-photo-view.css'
 import * as runtime from 'react/jsx-runtime'
-import { date } from '::/libs';
 import { Memo } from './page'
 import { compile, run } from '@mdx-js/mdx';
 import rehypePrism from '@mapbox/rehype-prism';
