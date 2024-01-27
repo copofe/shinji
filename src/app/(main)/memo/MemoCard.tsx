@@ -2,24 +2,21 @@ import 'react-photo-view/dist/react-photo-view.css'
 import * as runtime from 'react/jsx-runtime'
 import { Memo } from './page'
 import { compile, run } from '@mdx-js/mdx';
-import rehypePrism from '@mapbox/rehype-prism';
 import remarkGfm from 'remark-gfm';
 import { Fragment } from 'react';
 import MemoResource from './MemoResource';
 import Time from '::/components/time';
-
 
 export default async function MemoCard({ memo }: { memo: Memo }) {
   const content = String(
     await compile(memo.content, {
       outputFormat: 'function-body',
       development: false,
-      rehypePlugins: [rehypePrism],
       remarkPlugins: [remarkGfm],
     })
   )
 
-  const contentModule = await run(content, runtime)
+  const contentModule = await run(content, { ...runtime, Fragment: Fragment })
   const MdxContent = contentModule ? contentModule.default : Fragment
   return (
     <div className="p-4 mb-4 rounded-lg transition-all bg-background border">

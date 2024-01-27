@@ -5,7 +5,6 @@ import * as runtime from 'react/jsx-runtime'
 import { compile, run } from '@mdx-js/mdx'
 import remarkGfm from 'remark-gfm'
 import remarkUnwrapImages from 'remark-unwrap-images'
-import rehypePrism from '@mapbox/rehype-prism'
 import { Fragment } from 'react'
 import Tweet from '::/components/Tweet'
 import Image from '::/components/post/image'
@@ -65,14 +64,11 @@ export default async function Post({ params }: PostProps) {
     await compile(post.content, {
       outputFormat: 'function-body',
       development: false,
-      // @ts-ignore
-      rehypePlugins: [rehypePrism],
       remarkPlugins: [remarkUnwrapImages, remarkGfm],
     })
   )
 
-  // @ts-ignore
-  const contentModule = await run(content, runtime)
+  const contentModule = await run(content, { ...runtime, Fragment: Fragment })
   const MdxContent = contentModule ? contentModule.default : Fragment
 
   return (
