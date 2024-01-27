@@ -10,6 +10,7 @@ const barlow = Barlow({ subsets: ['latin'], weight: ['400'] })
 
 const { title, description } = SEO
 export const metadata: Metadata = {
+  metadataBase: new URL('https://shinji.me'),
   title,
   description,
   keywords: 'front-end,gamer,shinji',
