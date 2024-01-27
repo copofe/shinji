@@ -65,11 +65,13 @@ export default async function Post({ params }: PostProps) {
     await compile(post.content, {
       outputFormat: 'function-body',
       development: false,
+      // @ts-ignore
       rehypePlugins: [rehypePrism],
       remarkPlugins: [remarkUnwrapImages, remarkGfm],
     })
   )
 
+  // @ts-ignore
   const contentModule = await run(content, runtime)
   const MdxContent = contentModule ? contentModule.default : Fragment
 
