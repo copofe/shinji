@@ -1,4 +1,4 @@
-import PageTranstion from '::/components/PageTranstion'
+import PageTransition from '::/components/PageTransition'
 
 export default function BlogLayout({
   children,
@@ -6,8 +6,8 @@ export default function BlogLayout({
   children: React.ReactNode
 }) {
   return (
-    <PageTranstion>
+    <PageTransition>
       {children}
-    </PageTranstion>
+    </PageTransition>
   )
 }

@@ -1,4 +1,4 @@
-import PageTranstion from '::/components/PageTranstion'
+import PageTransition from '::/components/PageTransition'
 
 const projects = [
   {
@@ -16,11 +16,21 @@ const projects = [
     repo: 'https://github.com/copofe/mmit',
     description: '快捷生成模板文件的命令行工具。',
   },
+  {
+    name: 'Frontend Clean Architecture',
+    repo: 'https://github.com/copofe/frontend-clean-architecture',
+    description: '基于整洁架构理论设计的前端项目模板。',
+  },
+  {
+    name: 'Antdv-pro',
+    repo: 'https://github.com/copofe/antdv-pro',
+    description: 'fork 自 antdv-pro 项目，做了一部分修改和简化',
+  },
 ]
 
 export default async function Project() {
   return (
-    <PageTranstion className="items-center px-4 md:px-8">
+    <PageTransition className="items-center px-4 md:px-8">
       <div className="w-full md:max-w-[72em] py-8 md:py-16">
         <div className="text-2xl font-semibold mb-4">我的一些小项目</div>
         <div className="mb-16 text-base">
@@ -34,7 +44,7 @@ export default async function Project() {
                 <div className="text-base mb-4 font-semibold">
                   {project.name}
                 </div>
-                <div className="text-sm mb-2 h-[4.2em] line-clamp-3">
+                <div className="text-sm mb-2 h-[2.8em] line-clamp-2">
                   {project.description}
                 </div>
                 <a
@@ -48,6 +58,6 @@ export default async function Project() {
           })}
         </div>
       </div>
-    </PageTranstion>
+    </PageTransition>
   )
 }

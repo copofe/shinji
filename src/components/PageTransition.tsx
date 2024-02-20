@@ -8,7 +8,7 @@ const variants = {
   exit: { opacity: 0 },
 }
 
-export default function PageTranstion({
+export default function PageTransition({
   children,
   className,
 }: {

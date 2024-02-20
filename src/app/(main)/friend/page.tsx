@@ -1,4 +1,4 @@
-import PageTranstion from '::/components/PageTranstion'
+import PageTransition from '::/components/PageTransition'
 import Image from 'next/image'
 
 const friends = [
@@ -11,7 +11,7 @@ const friends = [
 
 export default function Friend() {
   return (
-    <PageTranstion className="p-4 md:p-8 items-center">
+    <PageTransition className="p-4 md:p-8 items-center">
       {friends.map((friend) => {
         return (
           <a
@@ -31,6 +31,6 @@ export default function Friend() {
           </a>
         )
       })}
-    </PageTranstion>
+    </PageTransition>
   )
 }
