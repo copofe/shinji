@@ -12,11 +12,6 @@ const projects = [
     description: '明日方舟合成玉可挖掘数量计算及自然增长预测。',
   },
   {
-    name: 'Mmit',
-    repo: 'https://github.com/copofe/mmit',
-    description: '快捷生成模板文件的命令行工具。',
-  },
-  {
     name: 'Frontend Clean Architecture',
     repo: 'https://github.com/copofe/frontend-clean-architecture',
     description: '基于整洁架构理论设计的前端项目模板。',

@@ -22,9 +22,11 @@ export default async function Post({
     .order('createdAt', { ascending: false })
   return (
     <div className="w-full md:w-auto relative p-4 md:p-8 flex flex-col items-center">
-      {posts.data?.map((post, i) => {
-        return <PostCard post={post} key={post.slug} index={i} />
-      })}
+      <div>
+        {posts.data?.map((post, i) => {
+          return <PostCard post={post} key={post.slug} index={i} />
+        })}
+      </div>
     </div>
   )
 }
