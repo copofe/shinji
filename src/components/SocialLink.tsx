@@ -1,7 +1,7 @@
 'use client'
 
 import Link, { type LinkProps } from 'next/link'
-import React from 'react'
+import React, { JSX } from 'react'
 
 import {
   type IconProps,

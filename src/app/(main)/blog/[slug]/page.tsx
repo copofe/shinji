@@ -14,17 +14,19 @@ import BlogPostComment from '::/components/post/comment'
 import PostContent from '::/components/post/content'
 import SEO from '::/seo'
 
-interface PostProps {
-  params: { slug: string }
+type params = Promise<{ slug: string }>
+type PostProps = {
+  params: params
 }
 
 export async function generateMetadata({ params }: PostProps) {
+  const { slug } = await params;
   const supabase = createServerComponentClient<Database>({ cookies })
   const { data: post } = await supabase
     .from('post')
     .select(BlogPostQuery)
     .eq('published', true)
-    .eq('slug', params.slug)
+    .eq('slug', slug)
     .limit(1)
     .maybeSingle()
 
@@ -48,12 +50,13 @@ export async function generateMetadata({ params }: PostProps) {
 }
 
 export default async function Post({ params }: PostProps) {
+  const { slug } = await params;
   const supabase = createServerComponentClient<Database>({ cookies })
   const { data: post } = await supabase
     .from('post')
     .select(BlogPostQuery)
     .eq('published', true)
-    .eq('slug', params.slug)
+    .eq('slug', slug)
     .limit(1)
     .maybeSingle()
 
@@ -83,7 +86,7 @@ export default async function Post({ params }: PostProps) {
           }}
         />
       </PostContent>
-      <BlogPostComment slug={params.slug} />
+      <BlogPostComment slug={slug} />
     </>
   )
 }

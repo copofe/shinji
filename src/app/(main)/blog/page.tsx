@@ -4,13 +4,10 @@ import PostCard from '::/components/post/card'
 import { LatestBlogPostsQuery, Database } from '::/db'
 
 const limit = 5
+type Params = Promise<{ [key: string]: number | undefined }>
 
-export default async function Post({
-  searchParams,
-}: {
-  searchParams: { [key: string]: number | undefined }
-}) {
-  const { page = 1 } = searchParams
+export default async function Post({ searchParams }: { searchParams: Params }) {
+  const { page = 1 } = await searchParams
   const supabase = createServerComponentClient<Database>({ cookies })
   const from = (page - 1) * limit
   const to = from + limit
