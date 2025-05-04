@@ -17,7 +17,7 @@ export default function PostCard({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.1 * index }}
-      className="py-6 md:py-10 prose dark:prose-invert"
+      className="py-6 md:py-10 prose dark:prose-invert max-w-[60ch]"
     >
       <Link href={`/blog/${post.slug}`} className="no-underline">
         {post.cover ? (

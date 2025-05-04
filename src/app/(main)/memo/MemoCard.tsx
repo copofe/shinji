@@ -3,6 +3,7 @@ import * as runtime from 'react/jsx-runtime'
 import { Memo } from './page'
 import { compile, run } from '@mdx-js/mdx';
 import remarkGfm from 'remark-gfm';
+import rehypePrettyCode from "rehype-pretty-code";
 import { Fragment } from 'react';
 import MemoResource from './MemoResource';
 import Time from '::/components/time';
@@ -13,6 +14,7 @@ export default async function MemoCard({ memo }: { memo: Memo }) {
       outputFormat: 'function-body',
       development: false,
       remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypePrettyCode],
     })
   )
 

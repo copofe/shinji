@@ -4,7 +4,8 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import * as runtime from 'react/jsx-runtime'
 import { compile, run } from '@mdx-js/mdx'
 import remarkGfm from 'remark-gfm'
-import remarkUnwrapImages from 'remark-unwrap-images'
+import remarkUnwrapImages from 'rehype-unwrap-images'
+import rehypePrettyCode from "rehype-pretty-code";
 import { Fragment } from 'react'
 import Tweet from '::/components/Tweet'
 import Image from '::/components/post/image'
@@ -65,6 +66,7 @@ export default async function Post({ params }: PostProps) {
       outputFormat: 'function-body',
       development: false,
       remarkPlugins: [remarkUnwrapImages, remarkGfm],
+      rehypePlugins: [rehypePrettyCode],
     })
   )
 

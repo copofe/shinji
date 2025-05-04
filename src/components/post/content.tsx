@@ -19,7 +19,7 @@ export default function PostContent({
       <motion.article
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="prose prose-neutral dark:prose-invert relative p-4 md:p-8 w-full !max-w-[80ch]"
+        className="prose prose-neutral dark:prose-invert relative p-4 md:p-8 w-full max-w-[80ch]!"
       >
         <h1>{post.title}</h1>
         <PostMeta post={post} />

@@ -1,5 +1,4 @@
 import './globals.css'
-import './prism.css'
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Barlow } from 'next/font/google'
