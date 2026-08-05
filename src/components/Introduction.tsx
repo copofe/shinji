@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { SocialLink } from '::/components/SocialLink'
 
 export default function Introduction() {
@@ -19,15 +19,15 @@ export default function Introduction() {
             transition={{ delay: 1.25, ease: 'linear', duration: 0.75 }}
             className="text-base md:text-xl text-right font-thin mr-4 text-gray-400"
           >
-            特に「侘び寂び」，原始的な美意識
+            特に「侘び寂び」、原始的な美意識
           </motion.div>
           <div className="text-6xl md:text-9xl leading-tight! move-up">
-            Like Design
+            Love Design
           </div>
         </div>
         <div className="overflow-hidden flex justify-center items-baseline">
           <div className="text-6xl md:text-9xl leading-tight! move-up mr-4">
-            <span>Also Gamer</span>
+            <span>Also a gamer</span>
           </div>
           <motion.div
             initial={{ opacity: 0, x: '-15%' }}
