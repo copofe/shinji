@@ -1,6 +1,6 @@
 'use client'
 
-import { useTheme } from 'next-themes';
+import { useTheme } from '::/components/ThemeProvider';
 import { useEffect, useMemo } from 'react'
 
 const CommentConfig = {

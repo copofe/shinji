@@ -1,15 +1,8 @@
-import { cookies } from 'next/headers'
 import { notFound } from 'next/navigation'
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import * as runtime from 'react/jsx-runtime'
-import { compile, run } from '@mdx-js/mdx'
-import remarkGfm from 'remark-gfm'
-import remarkUnwrapImages from 'rehype-unwrap-images'
-import rehypePrettyCode from "rehype-pretty-code";
-import { Fragment } from 'react'
-import Tweet from '::/components/Tweet'
+import { Tweet } from 'react-tweet'
 import Image from '::/components/post/image'
-import { BlogPostQuery, Database } from '::/db'
+import { getBySlug } from '::/db/post'
+import { renderMdx } from '::/libs/mdx'
 import BlogPostComment from '::/components/post/comment'
 import PostContent from '::/components/post/content'
 import SEO from '::/seo'
@@ -21,17 +14,11 @@ type PostProps = {
 
 export async function generateMetadata({ params }: PostProps) {
   const { slug } = await params;
-  const supabase = createServerComponentClient<Database>({ cookies })
-  const { data: post } = await supabase
-    .from('post')
-    .select(BlogPostQuery)
-    .eq('published', true)
-    .eq('slug', slug)
-    .limit(1)
-    .maybeSingle()
+  const post = await getBySlug(slug)
 
-  const title = post?.title + ' - ' + SEO.title
-  const description = post?.excerpt
+  // 缺失 slug 不再产出 "undefined - Shinji"，优雅退化到站点默认标题
+  const title = post ? `${post.title} - ${SEO.title}` : SEO.title
+  const description = post?.excerpt ?? SEO.description
   return {
     title,
     description,
@@ -51,30 +38,13 @@ export async function generateMetadata({ params }: PostProps) {
 
 export default async function Post({ params }: PostProps) {
   const { slug } = await params;
-  const supabase = createServerComponentClient<Database>({ cookies })
-  const { data: post } = await supabase
-    .from('post')
-    .select(BlogPostQuery)
-    .eq('published', true)
-    .eq('slug', slug)
-    .limit(1)
-    .maybeSingle()
+  const post = await getBySlug(slug)
 
   if (post === null) {
     notFound()
   }
 
-  const content = String(
-    await compile(post.content, {
-      outputFormat: 'function-body',
-      development: false,
-      remarkPlugins: [remarkUnwrapImages, remarkGfm],
-      rehypePlugins: [rehypePrettyCode],
-    })
-  )
-
-  const contentModule = await run(content, { ...runtime, Fragment: Fragment })
-  const MdxContent = contentModule ? contentModule.default : Fragment
+  const MdxContent = await renderMdx(post.content)
 
   return (
     <>

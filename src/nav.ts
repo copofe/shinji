@@ -7,10 +7,6 @@ export const navMenus = [
     name: 'Project',
     href: '/project',
   },
-  // {
-  //   name: 'Memo',
-  //   href: '/memo',
-  // },
   {
     name: 'Friend',
     href: '/friend',

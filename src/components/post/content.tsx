@@ -1,8 +1,8 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import PostMeta from '::/components/post/meta'
-import { Post } from '::/types'
+import { Post } from '::/db/post'
 
 export default function PostContent({
   post,
