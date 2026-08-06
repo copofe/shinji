@@ -3,7 +3,6 @@ import { Tweet } from 'react-tweet'
 import Image from '::/components/post/image'
 import { getBySlug } from '::/db/post'
 import { renderMdx } from '::/libs/mdx'
-import BlogPostComment from '::/components/post/comment'
 import PostContent from '::/components/post/content'
 import SEO from '::/seo'
 
@@ -57,16 +56,13 @@ export default async function Post({ params }: PostProps) {
   const MdxContent = await renderMdx(post.content)
 
   return (
-    <>
-      <PostContent post={post}>
-        <MdxContent
-          components={{
-            img: Image,
-            Tweet,
-          }}
-        />
-      </PostContent>
-      <BlogPostComment slug={slug} />
-    </>
+    <PostContent post={post}>
+      <MdxContent
+        components={{
+          img: Image,
+          Tweet,
+        }}
+      />
+    </PostContent>
   )
 }
