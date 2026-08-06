@@ -12,7 +12,7 @@ export default function PostContent({
   children: React.ReactNode
 }) {
   return (
-    <div className="self-center w-full md:w-[95ch] flex flex-col items-center">
+    <div className="self-center w-full md:w-[95ch] flex flex-col items-center mb-16 md:mb-24">
       {post.cover ? (
         <img src={post.cover} alt={post.title} />
       ) : null}
