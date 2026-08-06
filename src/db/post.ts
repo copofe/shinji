@@ -1,4 +1,5 @@
 import { cache } from 'react'
+import { unstable_cache } from 'next/cache'
 import { createClient } from '::/libs/supabase/server'
 import { Database } from '::/db/types'
 
@@ -25,19 +26,26 @@ const DETAIL_PROJECTION =
 
 const PAGE_SIZE = 5
 
-export async function listPublished(page: number): Promise<Post[]> {
-  const supabase = await createClient()
-  const from = (page - 1) * PAGE_SIZE
-  // range 是闭区间 [from, to]，故 to = from + size - 1，否则多取一行
-  const to = from + PAGE_SIZE - 1
-  const { data } = await supabase
-    .from('post')
-    .select(LIST_PROJECTION)
-    .eq('published', true)
-    .range(from, to)
-    .order('createdAt', { ascending: false })
-  return data ?? []
-}
+// 列表页读取 searchParams 做分页，路由被强制动态渲染，页面级 revalidate 无效。
+// 故在数据层缓存查询结果：同一分页的查询 1 小时内命中缓存，避免每次跨境回源。
+// cache key 必须含 page，否则不同分页会串数据。
+export const listPublished = unstable_cache(
+  async (page: number): Promise<Post[]> => {
+    const supabase = await createClient()
+    const from = (page - 1) * PAGE_SIZE
+    // range 是闭区间 [from, to]，故 to = from + size - 1，否则多取一行
+    const to = from + PAGE_SIZE - 1
+    const { data } = await supabase
+      .from('post')
+      .select(LIST_PROJECTION)
+      .eq('published', true)
+      .range(from, to)
+      .order('createdAt', { ascending: false })
+    return data ?? []
+  },
+  ['posts-list'],
+  { revalidate: 3600, tags: ['posts'] },
+)
 
 // 请求内记忆化：generateMetadata 与页面体各自调用，但同一请求只命中 DB 一次
 export const getBySlug = cache(
