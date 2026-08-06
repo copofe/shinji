@@ -31,7 +31,7 @@ const PAGE_SIZE = 5
 // cache key 必须含 page，否则不同分页会串数据。
 export const listPublished = unstable_cache(
   async (page: number): Promise<Post[]> => {
-    const supabase = await createClient()
+    const supabase = createClient()
     const from = (page - 1) * PAGE_SIZE
     // range 是闭区间 [from, to]，故 to = from + size - 1，否则多取一行
     const to = from + PAGE_SIZE - 1
@@ -50,7 +50,7 @@ export const listPublished = unstable_cache(
 // 请求内记忆化：generateMetadata 与页面体各自调用，但同一请求只命中 DB 一次
 export const getBySlug = cache(
   async (slug: string): Promise<BlogPost | null> => {
-    const supabase = await createClient()
+    const supabase = createClient()
     const { data } = await supabase
       .from('post')
       .select(DETAIL_PROJECTION)
