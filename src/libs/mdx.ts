@@ -1,7 +1,7 @@
 import * as runtime from 'react/jsx-runtime'
 import { compile, run } from '@mdx-js/mdx'
 import remarkGfm from 'remark-gfm'
-import remarkUnwrapImages from 'rehype-unwrap-images'
+import rehypeUnwrapImages from 'rehype-unwrap-images'
 import rehypePrettyCode from 'rehype-pretty-code'
 import type { MDXContent } from 'mdx/types.js'
 
@@ -24,8 +24,8 @@ export async function renderMdx(source: string): Promise<MDXContent> {
     await compile(source, {
       outputFormat: 'function-body',
       development: false,
-      remarkPlugins: [remarkUnwrapImages, remarkGfm],
-      rehypePlugins: [rehypePrettyCode],
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypeUnwrapImages, rehypePrettyCode],
     }),
   )
   const mod = await run(code, { ...runtime, Fragment: runtime.Fragment })
