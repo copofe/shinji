@@ -113,7 +113,31 @@ pre {
   overflow-x: auto;
   padding: 1rem 0;
 }
- 
+
 pre [data-line] {
   padding: 0 1rem;
 }
+
+/* Plyr 黑白主题：覆盖默认蓝色，与站点纯黑白调色板对齐。
+   视频控件底色用黑色半透明、图标/文字白色，主色（进度条/开关/滑块）用白色。 */
+.plyr {
+  --plyr-color-main: #fff;
+  --plyr-video-control-color: #fff;
+  --plyr-video-control-color-hover: #fff;
+  --plyr-video-control-background-hover: rgba(0, 0, 0, 0.6);
+  --plyr-video-controls-background: rgba(0, 0, 0, 0.5);
+  --plyr-video-progress-buffered-background: rgba(255, 255, 255, 0.3);
+  --plyr-video-range-track-background: rgba(255, 255, 255, 0.3);
+  --plyr-control-toggle-checked-background: #fff;
+  --plyr-range-fill-background: #fff;
+  --plyr-range-thumb-background: #fff;
+  --plyr-focus-visible-color: rgba(255, 255, 255, 0.5);
+  --plyr-menu-background: rgba(0, 0, 0, 0.85);
+  --plyr-menu-color: #fff;
+  --plyr-menu-back-border-color: rgba(255, 255, 255, 0.2);
+  --plyr-tooltip-background: rgba(0, 0, 0, 0.85);
+  --plyr-tooltip-color: #fff;
+  --plyr-badge-background: #fff;
+  --plyr-badge-text-color: #000;
+}
+
