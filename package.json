@@ -2,7 +2,7 @@
   "name": "shinji.me",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@11.16.0",
+  "packageManager": "pnpm@11.20.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@mdx-js/mdx": "^3.1.1",
-    "@supabase/supabase-js": "^2.112.0",
+    "@supabase/supabase-js": "^2.112.1",
     "@tailwindcss/postcss": "^4.3.3",
     "autoprefixer": "10.5.4",
     "clsx": "^2.1.1",
@@ -19,7 +19,7 @@
     "eslint": "10.8.0",
     "eslint-config-next": "16.3.0",
     "lucide-react": "^1.28.0",
-    "motion": "^12.43.0",
+    "motion": "^13.0.0",
     "next": "^16.3.0",
     "next-nprogress-bar": "^2.4.7",
     "next-themes": "^0.4.6",
@@ -32,7 +32,7 @@
     "rehype-pretty-code": "^0.14.5",
     "rehype-unwrap-images": "^1.0.0",
     "remark-gfm": "^4.0.1",
-    "shiki": "^4.4.1",
+    "shiki": "^4.4.2",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2"
