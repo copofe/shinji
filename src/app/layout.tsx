@@ -1,7 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Barlow } from 'next/font/google'
-import { ThemeProvider } from '::/components/ThemeProvider'
+import { ThemeProvider, NoPersistThemeScript } from '::/components/ThemeProvider'
 import SEO from '::/seo'
 
 const barlow = Barlow({ subsets: ['latin'], weight: ['400'] })
@@ -31,6 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
+      <NoPersistThemeScript />
       <body
         className={`min-h-screen flex flex-col ${barlow.className}`}
       >

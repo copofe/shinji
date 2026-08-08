@@ -30,7 +30,7 @@ function PhotoImage(props: JSX.IntrinsicElements['img']) {
         </PhotoView>
       </PhotoProvider>
       {props.alt ? (
-        <figcaption className="text-gray-400 text-xs mt-2 text-center">
+        <figcaption className="text-muted-foreground text-xs mt-2 text-center">
           {props.alt}
         </figcaption>
       ) : null}
@@ -95,7 +95,7 @@ function Video(props: JSX.IntrinsicElements['img']) {
         className="w-full"
       />
       {props.alt ? (
-        <figcaption className="text-gray-400 text-xs mt-2 text-center">
+        <figcaption className="text-muted-foreground text-xs mt-2 text-center">
           {props.alt}
         </figcaption>
       ) : null}
