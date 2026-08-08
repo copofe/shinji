@@ -18,17 +18,21 @@ export function ThemeToggle() {
   const isDark = resolvedTheme === 'dark'
 
   return (
-    <div className="relative cursor-pointer" aria-label="切换主题">
+    <button
+      type="button"
+      className="relative flex items-center justify-center w-5 h-5 md:w-6 md:h-6"
+      aria-label="切换主题"
+      aria-pressed={isDark}
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+    >
       <Sun
-        className="w-5 h-5 md:h-6 md:w-6 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
-        onClick={() => setTheme('dark')}
-        style={{ display: isDark ? 'none' : 'block' }}
+        className="absolute inset-0 w-full h-full rotate-0 scale-100 transition-transform duration-200 dark:-rotate-90 dark:scale-0"
+        aria-hidden="true"
       />
       <Moon
-        className="absolute left-0 top-0 w-5 h-5 md:h-6 md:w-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
-        onClick={() => setTheme('light')}
-        style={{ display: isDark ? 'block' : 'none' }}
+        className="absolute inset-0 w-full h-full rotate-90 scale-0 transition-transform duration-200 dark:rotate-0 dark:scale-100"
+        aria-hidden="true"
       />
-    </div>
+    </button>
   )
 }

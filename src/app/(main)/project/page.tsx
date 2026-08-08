@@ -26,25 +26,27 @@ const projects = [
 export default async function Project() {
   return (
     <PageTransition className="items-center px-4 md:px-8">
-      <div className="w-full md:max-w-[72em] py-8 md:py-16">
+      <div className="w-full max-w-[72em] py-8 md:py-12">
         <div className="text-2xl font-semibold mb-4">我的一些小项目</div>
         <div className="mb-16 text-base">
           一些是为了学习，一些是纯粹的 just for fun，
           但大多数都放不上台面……这里简单放几个没弃坑的。
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {projects.map((project) => {
             return (
-              <div key={project.name} className="mb-8">
-                <div className="text-base mb-4 font-semibold">
+              <div key={project.name}>
+                <div className="text-base mb-2 font-semibold">
                   {project.name}
                 </div>
-                <div className="text-sm mb-2 h-[2.8em] line-clamp-2">
+                <div className="text-sm mb-3 h-[2.8em] line-clamp-2">
                   {project.description}
                 </div>
                 <a
-                  className="text-xs text-secondary-foreground"
+                  className="text-xs text-secondary-foreground hover:text-foreground transition-colors underline underline-offset-2"
                   href={project.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Github
                 </a>

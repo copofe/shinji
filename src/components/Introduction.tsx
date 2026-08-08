@@ -6,7 +6,7 @@ import { SocialLink } from '::/components/SocialLink'
 export default function Introduction() {
   return (
     <>
-      <div className="p-4 md:px-40 md:py-20 flex-1 flex flex-col justify-center items-stretch self-stretch">
+      <div className="mx-auto w-full max-w-screen-xl px-4 md:px-8 md:py-16 flex-1 flex flex-col justify-center items-stretch self-stretch">
         <div className="overflow-hidden">
           <div className="text-6xl md:text-9xl leading-tight! move-up">
             Professional Developer
@@ -17,7 +17,7 @@ export default function Introduction() {
             initial={{ opacity: 0, x: '15%' }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.25, ease: 'linear', duration: 0.75 }}
-            className="text-base md:text-xl text-right font-thin mr-4 text-gray-400"
+            className="text-base md:text-xl text-right font-thin mr-4 text-muted-foreground"
           >
             特に「侘び寂び」、原始的な美意識
           </motion.div>
@@ -33,7 +33,7 @@ export default function Introduction() {
             initial={{ opacity: 0, x: '-15%' }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.25, ease: 'linear', duration: 0.75 }}
-            className="text-base md:text-xl font-thin text-gray-400"
+            className="text-base md:text-xl font-thin text-muted-foreground"
           >
             嗨，玩游戏的都是朋友
           </motion.div>

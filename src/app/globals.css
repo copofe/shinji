@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   :root {
@@ -67,18 +68,21 @@
   }
 }
 
-/* @layer base {
+@layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
   ::selection {
-    @apply bg-foreground text-background;
+    background-color: hsl(var(--foreground));
+    color: hsl(var(--background));
     text-shadow: none;
   }
   body {
-    @apply bg-background text-foreground relative;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    position: relative;
   }
-} */
+}
 
 @font-face {
   font-family: 'seaborn';
@@ -106,7 +110,21 @@ article {
   }
 }
 .move-up {
-  animation: moveUp 1.75s cubic-bezier(.73,.33,.33,.97) 0.25s 1 normal both;
+  animation: moveUp 1s cubic-bezier(.22,1,.36,1) 0.15s 1 normal both;
+}
+
+/* 统一可见焦点环：覆盖全站交互元素，满足 WCAG AA 可见焦点要求 */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* 尊重系统「减少动态效果」偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .move-up {
+    animation: none;
+  }
 }
 
 pre {

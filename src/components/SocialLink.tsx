@@ -28,9 +28,10 @@ export function SocialLink({
 
   return (
     <Link
-      className="text-muted-foreground hover:text-foreground"
+      className="text-muted-foreground hover:text-foreground transition-colors"
       href={href}
       target="_blank"
+      rel="noopener noreferrer"
       prefetch={false}
       aria-label={platform}
       {...props}

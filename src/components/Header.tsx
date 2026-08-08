@@ -10,7 +10,7 @@ export default function Header() {
     <motion.header
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="flex justify-between items-center w-full h-16 px-4 md:px-12 sticky top-0 bg-background z-50"
+      className="flex justify-between items-center w-full h-16 px-4 md:px-8 sticky top-0 bg-background z-50"
     >
       <Link
         href="/"
@@ -19,7 +19,7 @@ export default function Header() {
         S
       </Link>
       <div className="flex items-center">
-        <nav className="flex items-stretch mr-1 md:mr-6 text-sm md:text-lg">
+        <nav className="flex items-stretch mr-1 md:mr-6 text-sm md:text-lg" aria-label="主导航">
           {navMenus.map((menu) => {
             return (
               <div
