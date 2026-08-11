@@ -1,19 +1,9 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Lora } from 'next/font/google'
 import { ViewTransitions } from 'next-view-transitions'
 import { ThemeProvider } from '::/components/ThemeProvider'
 import { NoPersistThemeScript } from '::/components/NoPersistThemeScript'
 import SEO from '::/seo'
-
-// 衬线字体仅用于文章正文内的 <em>（拉丁字符斜体），不替换正文字体。
-const lora = Lora({
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  weight: ['400', '500'],
-  variable: '--font-serif',
-  display: 'swap',
-})
 
 const { title, description } = SEO
 export const metadata: Metadata = {
@@ -41,13 +31,9 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="zh-CN" suppressHydrationWarning>
-        <body
-          className={`min-h-screen flex flex-col ${lora.variable}`}
-        >
+        <body className="min-h-screen flex flex-col">
           <NoPersistThemeScript />
-          <ThemeProvider>
-            {children}
-          </ThemeProvider>
+          <ThemeProvider>{children}</ThemeProvider>
         </body>
       </html>
     </ViewTransitions>

@@ -44,7 +44,7 @@ export const listPublished = unstable_cache(
     return data ?? []
   },
   ['posts-list'],
-  { revalidate: 3600, tags: ['posts'] },
+  { revalidate: 3600, tags: ['posts'] }
 )
 
 // 请求内记忆化：generateMetadata 与页面体各自调用，但同一请求只命中 DB 一次
@@ -59,5 +59,5 @@ export const getBySlug = cache(
       .limit(1)
       .maybeSingle()
     return data
-  },
+  }
 )

@@ -28,7 +28,7 @@ export interface Database {
             columns: ['id']
             referencedRelation: 'users'
             referencedColumns: ['id']
-          }
+          },
         ]
       }
       post: {
@@ -74,7 +74,7 @@ export interface Database {
             columns: ['authorId']
             referencedRelation: 'author'
             referencedColumns: ['id']
-          }
+          },
         ]
       }
     }

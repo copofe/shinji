@@ -1,11 +1,11 @@
 ---
 name: personal-site-design
-description: "Design, build, or substantially improve pages and components for shinji.me — a personal site (landing, blog list, article, project, friend) built on Next.js, Tailwind v4, shadcn naked HSL tokens, Barlow, and a strict monochrome palette. Use for new pages, article styling, motion, media, theming, and responsive craft."
+description: 'Design, build, or substantially improve pages and components for shinji.me — a personal site (landing, blog list, article, project, friend) built on Next.js, Tailwind v4, shadcn naked HSL tokens, Barlow, and a strict monochrome palette. Use for new pages, article styling, motion, media, theming, and responsive craft.'
 ---
 
 # Design shinji.me
 
-Act as an excellent design engineer for a personal site whose stated taste is *wabi-sabi* and a primitive sense of beauty. Ship calm, precise, monochrome pages where typography and spacing carry the weight. Do not assemble generic SaaS components or chase decoration.
+Act as an excellent design engineer for a personal site whose stated taste is _wabi-sabi_ and a primitive sense of beauty. Ship calm, precise, monochrome pages where typography and spacing carry the weight. Do not assemble generic SaaS components or chase decoration.
 
 ## What this site is
 
@@ -37,7 +37,7 @@ When something is unknown, omit it honestly rather than invent metadata, dates, 
 
 Type is the primary design element here. Let it do the work.
 
-- **Landing (`Introduction`):** oversized Barlow (`text-6xl` → `text-9xl` responsive) as the dominant object, with thin muted phrases (`font-thin text-muted-foreground`) sitting against it. The contrast of scale and weight *is* the composition.
+- **Landing (`Introduction`):** oversized Barlow (`text-6xl` → `text-9xl` responsive) as the dominant object, with thin muted phrases (`font-thin text-muted-foreground`) sitting against it. The contrast of scale and weight _is_ the composition.
 - **Articles:** rely on `prose dark:prose-invert` (`@tailwindcss/typography`) for reading rhythm. Constrain body to a readable measure — the blog cards already use `max-w-[60ch]`; keep article prose in a similar band.
 - Hierarchy comes from size, weight, and spacing before any surface or border. Equivalent peers (a list of posts, a row of social links) share the same role, size, weight, and treatment.
 - Give every gap one owner. Within-group spacing is tight; between-group and between-section spacing is clearly larger. Don't add competing default margins to children of a wrapper that already sets rhythm.

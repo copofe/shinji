@@ -17,10 +17,12 @@
 `src/db/post.ts` —— post 聚合的数据访问模块。以领域概念命名,纠正了原 `queries.ts`(实为投影字符串)的名不副实。确立了 `src/db/` 的模式:**一聚合一模块**,以概念命名;`types.ts` 持 schema,聚合模块持访问函数与派生类型。
 
 接口:
+
 - `listPublished(page)` —— 已发布文章的分页列表,不含 content
 - `getBySlug(slug)` —— 按 slug 取单篇,含 content;React `cache()` 包裹,请求内记忆化
 
 派生类型:
+
 - `Post` —— 列表/展示形态(无 content);三个展示组件(card/content/meta)共用
 - `BlogPost` —— 详情形态(Post + content);content 仅在 `[slug]` 页面体的 MDX 编译处读取,不穿过展示组件
 
@@ -39,6 +41,7 @@
 `src/components/ThemeProvider.tsx` —— 主题(暗色/亮色/跟随系统)的唯一模块归宿。固化项目主题策略(attribute="class"、defaultTheme="system"、enableSystem),re-export `useTheme` 作为主题消费的统一入口。
 
 接口:
+
 - `<ThemeProvider>{children}</ThemeProvider>` —— 接收 children,配置已内化,调用点(app/layout.tsx)不再传主题 props
 - `useTheme` —— re-export 自 next-themes;ThemeToggle、BlogPostComment 等消费者统一从此导入,不直接依赖 next-themes
 
@@ -57,5 +60,3 @@
 `src/hooks/use-proximity-hover.ts` —— CardGroup 的邻近高亮(光标最近卡片磁吸高亮)的测量与命中模块。原返回 9 项(`activeIndex`/`setActiveIndex`/`itemRects`/`isMeasured`/`sessionRef`/`registerItem`/`remeasure`/`measureItems`/`handlers`),加独立导出 `useRegisterProximityItem`;唯一调用点(card.tsx)只用其中 5 项。
 
 接缝背后:测量路径分两种——`measureItems()` 同步(布局 effect 在子项/几何变更后调用,要当帧 rect);`scheduleMeasurement(attempts)` 走 rAF 合并(register/unregister 与 container resize 走它,合并 AnimatePresence 重挂载的密集调用)。原 `isMeasured` 就绪态 + `remeasure` 的"先降就绪再排测量"逻辑——无调用点读取就绪态,整条就绪跟踪是无观测的死行为,一并删除。`setActiveIndex`/`remeasure`/`useRegisterProximityItem` 同为无导入者,从公开面移除。深化方向:公开面收窄、实现不变 → 更深(接口小、实现丰富)。将来若出现第二个调用点且需就绪态,再加回(同 renderMdx 的 YAGNI 理由)。
-
-

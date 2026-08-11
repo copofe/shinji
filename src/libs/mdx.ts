@@ -26,7 +26,7 @@ export async function renderMdx(source: string): Promise<MDXContent> {
       development: false,
       remarkPlugins: [remarkGfm],
       rehypePlugins: [rehypeUnwrapImages, rehypePrettyCode],
-    }),
+    })
   )
   const mod = await run(code, { ...runtime, Fragment: runtime.Fragment })
   return mod ? mod.default : EmptyMdx

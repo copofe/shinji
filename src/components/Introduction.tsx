@@ -2,10 +2,8 @@ import { SocialLink } from '::/components/SocialLink'
 
 export default function Introduction() {
   return (
-    <header className="mb-16 md:mb-32 flex flex-col items-start">
-      <h1 className="text-xl md:text-2xl font-medium leading-tight">
-        @Shinji
-      </h1>
+    <header className="mb-16 mt-8 md:mb-32 md:mt-8 flex flex-col items-start">
+      <h1 className="text-base md:text-lg font-medium leading-tight">@Shinji</h1>
       <div className="mt-2 text-sm md:text-base text-muted-foreground leading-relaxed">
         Professional Developer, Love Design. Also a gamer.
       </div>

@@ -19,10 +19,21 @@ export default function HomeSections({ posts }: { posts: Post[] }) {
         <span className="mb-5 block font-medium">Post</span>
         <CardGroup separated className="-mx-4 gap-0">
           {posts.map((post, i) => (
-            <Card key={post.slug} href={`/blog/${post.slug}`} index={i} label={post.title}>
+            <Card
+              key={post.slug}
+              href={`/blog/${post.slug}`}
+              index={i}
+              label={post.title}
+            >
               <CardHeader>
-                <CardTitle style={{ viewTransitionName: `post-title-${post.slug}` }}>{post.title}</CardTitle>
-                <CardDescription className="truncate">{post.excerpt}</CardDescription>
+                <CardTitle
+                  style={{ viewTransitionName: `post-title-${post.slug}` }}
+                >
+                  {post.title}
+                </CardTitle>
+                <CardDescription className="truncate">
+                  {post.excerpt}
+                </CardDescription>
               </CardHeader>
             </Card>
           ))}
@@ -48,7 +59,9 @@ export default function HomeSections({ posts }: { posts: Post[] }) {
             >
               <CardHeader>
                 <CardTitle>{project.name}</CardTitle>
-                <CardDescription className="truncate">{project.description}</CardDescription>
+                <CardDescription className="truncate">
+                  {project.description}
+                </CardDescription>
               </CardHeader>
             </Card>
           ))}

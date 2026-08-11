@@ -30,11 +30,17 @@ export default function PostContent({
           返回
         </button>
         {post.cover ? (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img src={post.cover} alt={post.title} className="w-full rounded mb-8" />
+          /* oxlint-disable-next-line nextjs/no-img-element */
+          <img
+            src={post.cover}
+            alt={post.title}
+            className="w-full rounded mb-8"
+          />
         ) : null}
         <article className="article w-full max-w-none">
-          <h1 style={{ viewTransitionName: `post-title-${post.slug}` }}>{post.title}</h1>
+          <h1 style={{ viewTransitionName: `post-title-${post.slug}` }}>
+            {post.title}
+          </h1>
           <div className="mt-2 mb-8">
             <PostMeta post={post} />
           </div>

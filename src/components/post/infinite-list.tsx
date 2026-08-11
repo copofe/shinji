@@ -12,7 +12,11 @@ import {
 } from '::/components/ui/card'
 import { ThinkingIndicator } from '::/components/ui/thinking-indicator'
 
-export default function InfiniteList({ initialPosts }: { initialPosts: Post[] }) {
+export default function InfiniteList({
+  initialPosts,
+}: {
+  initialPosts: Post[]
+}) {
   const [posts, setPosts] = useState<Post[]>(initialPosts)
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
@@ -20,7 +24,9 @@ export default function InfiniteList({ initialPosts }: { initialPosts: Post[] })
   const [done, setDone] = useState(initialPosts.length < PAGE_SIZE)
   // 记录最近一次追加前已存在的卡片数：索引 >= 该值的卡片入场动画，
   // 更早的卡片用 initial={false} 瞬间显示（SSR 首屏不延迟、无 hydration 闪烁）。
-  const [animatedFromIndex, setAnimatedFromIndex] = useState(initialPosts.length)
+  const [animatedFromIndex, setAnimatedFromIndex] = useState(
+    initialPosts.length
+  )
 
   async function loadMore() {
     if (loading || done) return
@@ -53,12 +59,22 @@ export default function InfiniteList({ initialPosts }: { initialPosts: Post[] })
               key={post.slug}
               initial={isNew ? { opacity: 0, y: 8 } : false}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ ease: 'easeOut', duration: 0.3, delay: staggerDelay }}
+              transition={{
+                ease: 'easeOut',
+                duration: 0.3,
+                delay: staggerDelay,
+              }}
             >
               <Card href={`/blog/${post.slug}`} index={i} label={post.title}>
                 <CardHeader>
-                  <CardTitle style={{ viewTransitionName: `post-title-${post.slug}` }}>{post.title}</CardTitle>
-                  <CardDescription className="truncate">{post.excerpt}</CardDescription>
+                  <CardTitle
+                    style={{ viewTransitionName: `post-title-${post.slug}` }}
+                  >
+                    {post.title}
+                  </CardTitle>
+                  <CardDescription className="truncate">
+                    {post.excerpt}
+                  </CardDescription>
                 </CardHeader>
               </Card>
             </motion.div>

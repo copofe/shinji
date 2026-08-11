@@ -22,7 +22,7 @@ type PostProps = {
 }
 
 export async function generateMetadata({ params }: PostProps) {
-  const { slug } = await params;
+  const { slug } = await params
   const post = await getBySlug(slug)
 
   // 缺失 slug 不再产出 "undefined - Shinji"，优雅退化到站点默认标题
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: PostProps) {
 }
 
 export default async function Post({ params }: PostProps) {
-  const { slug } = await params;
+  const { slug } = await params
   const post = await getBySlug(slug)
 
   if (post === null) {

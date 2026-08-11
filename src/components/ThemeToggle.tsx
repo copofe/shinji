@@ -20,7 +20,9 @@ export function ThemeToggle() {
   const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
     const next = isDark ? 'light' : 'dark'
     // 降级：浏览器不支持，或用户偏好减少动态效果 → 直接切换，不走扩散动画。
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches
     if (typeof document.startViewTransition !== 'function' || reduceMotion) {
       setTheme(next)
       return
@@ -31,7 +33,7 @@ export function ThemeToggle() {
     const y = event.clientY
     const endRadius = Math.hypot(
       Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y),
+      Math.max(y, window.innerHeight - y)
     )
 
     const transition = document.startViewTransition(() => {
@@ -50,7 +52,7 @@ export function ThemeToggle() {
           duration: 400,
           easing: 'ease-in-out',
           pseudoElement: '::view-transition-new(root)',
-        },
+        }
       )
     })
   }

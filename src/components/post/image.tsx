@@ -25,7 +25,7 @@ function PhotoImage(props: JSX.IntrinsicElements['img']) {
     <figure>
       <PhotoProvider maskOpacity={0.8}>
         <PhotoView src={props.src as string}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
+          {/* oxlint-disable-next-line nextjs/no-img-element */}
           <img {...props} className="cursor-zoom-in" alt={props.alt} />
         </PhotoView>
       </PhotoProvider>
@@ -57,7 +57,7 @@ function Video(props: JSX.IntrinsicElements['img']) {
       const mod = (await import('plyr')) as unknown as {
         default: new (
           target: HTMLElement,
-          options?: Record<string, unknown>,
+          options?: Record<string, unknown>
         ) => PlyrInstance
       }
       // 防止组件已卸载后才初始化
