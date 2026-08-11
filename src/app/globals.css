@@ -61,7 +61,9 @@
     --secondary-foreground: 0 0% 15%;
 
     --muted: 0 0% 95%;
-    --muted-foreground: 0 0% 58%;
+    /* 46%：满足 WCAG AA（对 99% 背景比值 4.49），比标题 foreground 12% 浅，
+       比 secondary 35% 深，维持"标题 > 次要文字 > muted"三级灰阶 */
+    --muted-foreground: 0 0% 46%;
 
     --accent: 0 0% 95%;
     --accent-foreground: 0 0% 15%;
@@ -101,7 +103,9 @@
     --secondary-foreground: 0 0% 93%;
 
     --muted: 0 0% 13%;
-    --muted-foreground: 0 0% 45%;
+    /* 50%：满足 WCAG AA（对 7% 背景比值 4.72），比标题 foreground 93% 深，
+       比 secondary 66% 浅 */
+    --muted-foreground: 0 0% 50%;
 
     --accent: 0 0% 13%;
     --accent-foreground: 0 0% 93%;
