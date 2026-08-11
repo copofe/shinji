@@ -25,9 +25,9 @@ const projects = [
 
 export default async function Project() {
   return (
-    <PageTransition className="items-center px-4 md:px-8">
-      <div className="w-full max-w-[72em] py-8 md:py-12">
-        <div className="text-2xl font-semibold mb-4">我的一些小项目</div>
+    <PageTransition className="items-center px-4 md:px-8 py-8 md:py-12">
+      <div className="w-full max-w-[80ch]">
+        <div className="text-2xl mb-4">我的一些小项目</div>
         <div className="mb-16 text-base">
           一些是为了学习，一些是纯粹的 just for fun，
           但大多数都放不上台面……这里简单放几个没弃坑的。
@@ -36,7 +36,7 @@ export default async function Project() {
           {projects.map((project) => {
             return (
               <div key={project.name}>
-                <div className="text-base mb-2 font-semibold">
+                <div className="text-base mb-2">
                   {project.name}
                 </div>
                 <div className="text-sm mb-3 h-[2.8em] line-clamp-2">

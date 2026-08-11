@@ -1,70 +1,77 @@
 @import 'tailwindcss';
-@plugin "@tailwindcss/typography";
 @custom-variant dark (&:where(.dark, .dark *));
 
 @layer base {
   :root {
     --tw-bg-opacity: 1;
 
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    /* 暖调配色：对齐 emilkowal.ski 的米白/暖黑基调（色相 30-60，低饱和） */
+    --background: 60 33% 99%;
+    --foreground: 40 6% 12%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    /* 正文实色：比标题（--foreground）明显浅一档，不用 opacity 叠加 */
+    --foreground-secondary: 40 5% 35%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
+    --card: 60 33% 99%;
+    --card-foreground: 40 6% 12%;
 
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
+    --popover: 60 33% 99%;
+    --popover-foreground: 40 6% 12%;
 
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+    --primary: 40 6% 15%;
+    --primary-foreground: 60 20% 97%;
 
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+    --secondary: 50 14% 95%;
+    --secondary-foreground: 40 6% 15%;
 
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    --muted: 50 14% 95%;
+    --muted-foreground: 42 6% 58%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --accent: 50 14% 95%;
+    --accent-foreground: 40 6% 15%;
 
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 60 20% 97%;
+
+    --border: 40 6% 91%;
+    --input: 40 6% 91%;
+    --ring: 40 6% 15%;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
+    /* 暖调暗色：保持色温暖，不用纯灰 */
+    --background: 40 5% 7%;
+    --foreground: 60 8% 93%;
 
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
+    /* 正文实色：比标题明显浅一档，不用 opacity 叠加 */
+    --foreground-secondary: 55 7% 66%;
 
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
+    --card: 40 5% 7%;
+    --card-foreground: 60 8% 93%;
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
+    --popover: 40 5% 7%;
+    --popover-foreground: 60 8% 93%;
 
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
+    --primary: 60 8% 93%;
+    --primary-foreground: 40 5% 10%;
 
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
+    --secondary: 40 4% 13%;
+    --secondary-foreground: 60 8% 93%;
 
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
+    --muted: 40 4% 13%;
+    --muted-foreground: 42 5% 45%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --accent: 40 4% 13%;
+    --accent-foreground: 60 8% 93%;
 
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 60 8% 93%;
+
+    --border: 40 4% 17%;
+    --input: 40 4% 17%;
+    --ring: 60 8% 83%;
   }
 }
 
@@ -81,6 +88,145 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      system-ui, "PingFang SC", "HarmonyOS Sans SC", "MiSans",
+      "Microsoft YaHei", "微软雅黑", "Noto Sans CJK SC",
+      "Source Han Sans SC", sans-serif;
+  }
+}
+
+/* 文章正文样式：手写一套，替代 @tailwindcss/typography。
+   参考 emilkowal.ski：标题克制（接近正文大小、不加粗），正文用实色（比标题浅），
+   链接细灰下划线，<em> 走衬线斜体（仅拉丁字符）。全站默认不加粗，只有 strong/b。 */
+@layer components {
+  .article {
+    color: hsl(var(--foreground-secondary));
+    line-height: 1.65;
+    font-size: 1rem;
+  }
+
+  .article p {
+    margin: 0 0 26px;
+  }
+
+  /* 标题：克制，层级靠字号微差，全部不加粗；用满色 foreground，比正文更深 */
+  .article h1 {
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin: 0 0 2rem;
+    line-height: 1.3;
+    color: hsl(var(--foreground));
+  }
+  .article h2 {
+    font-size: 1.0625rem;
+    font-weight: 400;
+    margin: 3.5rem 0 1.25rem;
+    line-height: 1.4;
+    color: hsl(var(--foreground));
+  }
+  .article h3 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 2rem 0 1rem;
+    color: hsl(var(--foreground));
+  }
+  .article h4 {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 1.5rem 0 0.75rem;
+    color: hsl(var(--foreground));
+  }
+
+  /* <em> 衬线斜体：Latin 词用 Lora italic，中文无斜体形自动 fallback */
+  .article em {
+    font-family: var(--font-serif), Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 0.98em;
+  }
+
+  /* 链接：细下划线，浅灰 hover 加深，不用蓝色，不加粗 */
+  .article a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.15em;
+    text-decoration-color: hsl(var(--border));
+  }
+  .article a:hover {
+    text-decoration-color: hsl(var(--muted-foreground));
+  }
+
+  /* blockquote：细线、正体，贴近原页面的克制引文；用正文色，不用 opacity */
+  .article blockquote {
+    border-left: 2px solid hsl(var(--border));
+    font-style: normal;
+    padding-left: 1.25rem;
+    margin: 2rem 0;
+    color: hsl(var(--foreground-secondary));
+  }
+  .article blockquote p {
+    margin: 0 0 0.5rem;
+  }
+  .article blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* 列表 */
+  .article ul,
+  .article ol {
+    margin: 0 0 26px;
+    padding-left: 1.5rem;
+  }
+  .article ul { list-style: disc; }
+  .article ol { list-style: decimal; }
+  .article li { margin: 0.25rem 0; color: hsl(var(--foreground-secondary)); }
+  .article li::marker { color: hsl(var(--muted-foreground)); }
+
+  /* 代码：行内 */
+  .article :not(pre) > code {
+    background-color: hsl(var(--muted));
+    border: 1px solid hsl(var(--border));
+    border-radius: 0.375rem;
+    padding: 0.125rem 0.3rem;
+    font-size: 0.875em;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  /* 代码块（rehype-pretty-code 产出 pre），行高与圆角 */
+  .article pre {
+    margin: 0 0 26px;
+    border-radius: 0.5rem;
+  }
+
+  /* 图片/视频：image.tsx 用 figure 包裹，给 figure 设下间距与段落一致 */
+  .article figure {
+    margin: 0 0 26px;
+  }
+  .article img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+
+  /* 分隔线 */
+  .article hr {
+    border: 0;
+    border-top: 1px solid hsl(var(--border));
+    margin: 3rem 0;
+  }
+
+  /* 表格 */
+  .article table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 26px;
+    font-size: 0.95em;
+  }
+  .article th,
+  .article td {
+    border: 1px solid hsl(var(--border));
+    padding: 0.5rem 0.75rem;
+    text-align: left;
   }
 }
 
@@ -130,6 +276,7 @@ article {
 pre {
   overflow-x: auto;
   padding: 1rem 0;
+  font-size: 14px;
 }
 
 pre [data-line] {
@@ -158,4 +305,3 @@ pre [data-line] {
   --plyr-badge-background: #fff;
   --plyr-badge-text-color: #000;
 }
-

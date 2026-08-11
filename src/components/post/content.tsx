@@ -20,10 +20,12 @@ export default function PostContent({
         <motion.article
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="prose dark:prose-invert w-full max-w-none"
+          className="article w-full max-w-none"
         >
           <h1>{post.title}</h1>
-          <PostMeta post={post} />
+          <div className="mt-2 mb-8">
+            <PostMeta post={post} />
+          </div>
           {children}
         </motion.article>
       </div>

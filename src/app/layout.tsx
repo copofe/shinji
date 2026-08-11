@@ -1,11 +1,18 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Barlow } from 'next/font/google'
+import { Lora } from 'next/font/google'
 import { ThemeProvider } from '::/components/ThemeProvider'
 import { NoPersistThemeScript } from '::/components/NoPersistThemeScript'
 import SEO from '::/seo'
 
-const barlow = Barlow({ subsets: ['latin'], weight: ['400'] })
+// 衬线字体仅用于文章正文内的 <em>（拉丁字符斜体），不替换正文字体。
+const lora = Lora({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: ['400', '500'],
+  variable: '--font-serif',
+  display: 'swap',
+})
 
 const { title, description } = SEO
 export const metadata: Metadata = {
@@ -33,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="zh-CN" suppressHydrationWarning>
       <body
-        className={`min-h-screen flex flex-col ${barlow.className}`}
+        className={`min-h-screen flex flex-col ${lora.variable}`}
       >
         <NoPersistThemeScript />
         <ThemeProvider>

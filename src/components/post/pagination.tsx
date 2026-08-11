@@ -43,7 +43,7 @@ export default function PostPagination({
           aria-current={p === currentPage ? 'page' : undefined}
           className={
             p === currentPage
-              ? 'px-3 py-1 rounded font-semibold pointer-events-none opacity-100'
+              ? 'px-3 py-1 rounded pointer-events-none opacity-100'
               : 'px-3 py-1 rounded hover:opacity-70 transition-opacity'
           }
           {...(p === currentPage ? { tabIndex: -1, 'aria-disabled': 'true' } : {})}

@@ -14,7 +14,7 @@ export default function Header() {
     >
       <Link
         href="/"
-        className="text-4xl font-semibold seaborn"
+        className="text-4xl seaborn"
       >
         S
       </Link>

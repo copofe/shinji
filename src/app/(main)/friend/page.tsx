@@ -20,7 +20,7 @@ export default function Friend() {
                 href={friend.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 hover:text-foreground transition-colors"
+                className="flex items-center gap-3 text-[hsl(var(--foreground-secondary))] hover:text-foreground transition-colors"
               >
                 <Image
                   src={friend.favicon}
