@@ -48,3 +48,14 @@
 
 `src/components/Tweet.tsx` 原为 react-tweet 的纯重命名转发(文件名 Tweet / 默认导出 Twitter / 转发库的 Tweet,三方名字打架),单调用点、无配置、无横切关注点。删除:blog/[slug]/page.tsx 直接 `import { Tweet } from 'react-tweet'`。无深化价值——通过删除测试不集中复杂度(本就无复杂度可藏),删除收益是去掉一个误导性接缝与名字混乱。
 
+### 已删除:icon-context 图标注册表
+
+`src/libs/icon-context.tsx` 原为可替换图标基础设施(47 个 Lucide 图标 + `IconProvider` 交换整个图标集 + `useIcons()` 取全表 + `defaultIcons` re-export)。真实调用点只有两处 `useIcon("x")` / `useIcon("arrow-right")`,全在 card.tsx 内。`IconProvider` 从未挂载、`useIcons` 从未调用——一个零适配器的假想接缝。删除:card.tsx 直接 `import { X, ArrowRight, type LucideIcon } from "lucide-react"`,prop 类型从 `IconComponent` 改为 `LucideIcon`(同构:`ComponentType<{size,strokeWidth,className}>`)。删除测试通过——删则不集中复杂度(本就无复杂度可藏)。与已删除的 Tweet 包装器同形:单/双调用点的纯转发无深化价值。
+
+### useProximityHover —— 邻近高亮 hook
+
+`src/hooks/use-proximity-hover.ts` —— CardGroup 的邻近高亮(光标最近卡片磁吸高亮)的测量与命中模块。原返回 9 项(`activeIndex`/`setActiveIndex`/`itemRects`/`isMeasured`/`sessionRef`/`registerItem`/`remeasure`/`measureItems`/`handlers`),加独立导出 `useRegisterProximityItem`;唯一调用点(card.tsx)只用其中 5 项。
+
+接缝背后:测量路径分两种——`measureItems()` 同步(布局 effect 在子项/几何变更后调用,要当帧 rect);`scheduleMeasurement(attempts)` 走 rAF 合并(register/unregister 与 container resize 走它,合并 AnimatePresence 重挂载的密集调用)。原 `isMeasured` 就绪态 + `remeasure` 的"先降就绪再排测量"逻辑——无调用点读取就绪态,整条就绪跟踪是无观测的死行为,一并删除。`setActiveIndex`/`remeasure`/`useRegisterProximityItem` 同为无导入者,从公开面移除。深化方向:公开面收窄、实现不变 → 更深(接口小、实现丰富)。将来若出现第二个调用点且需就绪态,再加回(同 renderMdx 的 YAGNI 理由)。
+
+

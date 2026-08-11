@@ -1,6 +1,42 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* 把 :root / .dark 里定义的 HSL token 映射到 Tailwind v4 的颜色命名空间，
+   这样 bg-background / text-foreground / border-border 等工具类才能生成。
+   --hover / --active 是 fluidfunctionalism Card 的高亮叠层色，
+   用 foreground 的半透明表达，自动跟随主题。 */
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-hover: hsl(var(--hover));
+  --color-active: hsl(var(--active));
+  @keyframes shimmer {
+  0% {
+    background-position: 0% 0;
+    }
+  100% {
+    background-position: 100% 0;
+    }
+  }
+}
+
 @layer base {
   :root {
     --tw-bg-opacity: 1;
@@ -37,6 +73,10 @@
     --input: 40 6% 91%;
     --ring: 40 6% 15%;
 
+    /* fluidfunctionalism Card 高亮叠层：前景色 5% 半透明 */
+    --hover: 40 6% 12% / 0.05;
+    --active: 40 6% 12% / 0.08;
+
     --radius: 0.5rem;
   }
 
@@ -72,6 +112,10 @@
     --border: 40 4% 17%;
     --input: 40 4% 17%;
     --ring: 60 8% 83%;
+
+    /* fluidfunctionalism Card 高亮叠层：前景色 6% 半透明 */
+    --hover: 60 8% 93% / 0.06;
+    --active: 60 8% 93% / 0.1;
   }
 }
 
@@ -246,31 +290,11 @@ article {
   width: 100%;
 }
 
-@keyframes moveUp {
-  0% {
-    transform: translateY(100%);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-.move-up {
-  animation: moveUp 1s cubic-bezier(.22,1,.36,1) 0.15s 1 normal both;
-}
-
 /* 统一可见焦点环：覆盖全站交互元素，满足 WCAG AA 可见焦点要求 */
 :focus-visible {
   outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
   border-radius: 2px;
-}
-
-/* 尊重系统「减少动态效果」偏好 */
-@media (prefers-reduced-motion: reduce) {
-  .move-up {
-    animation: none;
-  }
 }
 
 pre {
@@ -304,4 +328,21 @@ pre [data-line] {
   --plyr-tooltip-color: #fff;
   --plyr-badge-background: #fff;
   --plyr-badge-text-color: #000;
+}
+  .shimmer-text {
+    color: transparent;
+    background: linear-gradient(90deg, #a3a3a3 0%, #a3a3a3 35%, #525252 50%, #a3a3a3 65%, #a3a3a3 100%);
+    background-size: 300% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* 主题切换的圆形扩散：禁用 root 快照自带的默认 fade，只让 ThemeToggle 注入的
+   clipPath Web Animation 驱动过渡，避免两层动画叠加导致闪烁。
+   仅作用于 root —— 具名元素（如 post-title-${slug}）的 morph 不受影响。 */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }

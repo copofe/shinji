@@ -1,7 +1,7 @@
 'use client'
 
 import Link, { type LinkProps } from 'next/link'
-import React, { JSX } from 'react'
+import { type JSX } from 'react'
 
 import {
   type IconProps,
@@ -10,21 +10,20 @@ import {
   TwitterIcon,
 } from '::/assets/icons'
 
-type IconType = (props: IconProps) => JSX.Element
 type Platform = 'github' | 'twitter' | 'mail'
 
-const iconMapper: { [key in Platform]: IconType } = {
+const icons: Record<Platform, (props: IconProps) => JSX.Element> = {
   github: GitHubIcon,
   twitter: TwitterIcon,
-  mail: MailIcon
+  mail: MailIcon,
 }
+
 export function SocialLink({
   platform,
   href,
   ...props
 }: { platform: Platform } & LinkProps) {
-
-  const Icon = iconMapper[platform]
+  const Icon = icons[platform]
 
   return (
     <Link
@@ -36,7 +35,7 @@ export function SocialLink({
       aria-label={platform}
       {...props}
     >
-      <Icon className="h-5 w-5"  />
+      <Icon className="h-5 w-5" />
     </Link>
   )
 }

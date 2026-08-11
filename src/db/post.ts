@@ -25,7 +25,7 @@ const DETAIL_PROJECTION =
   'createdAt, title, excerpt, like, cover, slug, content, author!inner (nickname, id)'
 
 // 导出 PAGE_SIZE：页面层用它算总页数和分页导航范围。
-export const PAGE_SIZE = 5
+export const PAGE_SIZE = 10
 
 // 数据层缓存分页查询：同一分页 1 小时内命中缓存，避免每次跨境回源 Supabase。
 // cache key 由 unstable_cache 按 "posts-list" + 参数 page 自动区分，不会串页。
@@ -44,21 +44,6 @@ export const listPublished = unstable_cache(
     return data ?? []
   },
   ['posts-list'],
-  { revalidate: 3600, tags: ['posts'] },
-)
-
-// 已发布文章总数：generateStaticParams 用它算总页数以预生成所有分页页。
-// 构建时查一次库；运行时同样走 1 小时缓存。
-export const countPublished = unstable_cache(
-  async (): Promise<number> => {
-    const supabase = createClient()
-    const { count } = await supabase
-      .from('post')
-      .select('*', { count: 'exact', head: true })
-      .eq('published', true)
-    return count ?? 0
-  },
-  ['posts-count'],
   { revalidate: 3600, tags: ['posts'] },
 )
 

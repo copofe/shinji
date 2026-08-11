@@ -1,51 +1,19 @@
-'use client'
-
-import { motion } from 'motion/react'
 import { SocialLink } from '::/components/SocialLink'
 
 export default function Introduction() {
   return (
-    <>
-      <div className="mx-auto w-full max-w-screen-xl px-4 md:px-8 md:py-16 flex-1 flex flex-col justify-center items-stretch self-stretch">
-        <div className="overflow-hidden">
-          <div className="text-6xl md:text-9xl leading-tight! move-up">
-            Professional Developer
-          </div>
-        </div>
-        <div className="overflow-hidden flex justify-end items-baseline my-8">
-          <motion.div
-            initial={{ opacity: 0, x: '15%' }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.25, ease: 'linear', duration: 0.75 }}
-            className="text-base md:text-xl text-right mr-4 text-muted-foreground"
-          >
-            特に「侘び寂び」、原始的な美意識
-          </motion.div>
-          <div className="text-6xl md:text-9xl leading-tight! move-up">
-            Love Design
-          </div>
-        </div>
-        <div className="overflow-hidden flex justify-center items-baseline">
-          <div className="text-6xl md:text-9xl leading-tight! move-up mr-4">
-            <span>Also a gamer</span>
-          </div>
-          <motion.div
-            initial={{ opacity: 0, x: '-15%' }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.25, ease: 'linear', duration: 0.75 }}
-            className="text-base md:text-xl text-muted-foreground"
-          >
-            嗨，玩游戏的都是朋友
-          </motion.div>
-        </div>
+    <header className="mb-16 md:mb-32 flex flex-col items-start">
+      <h1 className="text-xl md:text-2xl font-medium leading-tight">
+        @Shinji
+      </h1>
+      <div className="mt-2 text-sm md:text-base text-muted-foreground leading-relaxed">
+        Professional Developer, Love Design. Also a gamer.
       </div>
-      <div className="overflow-hidden flex justify-center my-4">
-        <div className="flex self-start *:mx-3 move-up">
-          <SocialLink platform="github" href="https://github.com/copofe" />
-          <SocialLink platform="twitter" href="https://twitter.com/Shinji_Zl" />
-          <SocialLink platform="mail" href="mailto:me@shinji.me" />
-        </div>
+      <div className="mt-6 flex *:mr-4">
+        <SocialLink platform="github" href="https://github.com/copofe" />
+        <SocialLink platform="twitter" href="https://twitter.com/Shinji_Zl" />
+        <SocialLink platform="mail" href="mailto:me@shinji.me" />
       </div>
-    </>
+    </header>
   )
 }
