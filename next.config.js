@@ -13,7 +13,8 @@ const ContentSecurityPolicy = [
   "img-src 'self' data: https:",
   // 视频用 plyr，源 URL 可能是外部 https
   "media-src 'self' https:",
-  "font-src 'self'",
+  // 可变字体兜底是 base64 内联（font-weight 系统），需放行 data:
+  "font-src 'self' data:",
   // Supabase 全在服务端；客户端只 fetch 同源 /api/posts
   "connect-src 'self'",
   "object-src 'none'",
