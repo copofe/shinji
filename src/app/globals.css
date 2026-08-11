@@ -368,8 +368,7 @@ pre [data-line] {
 }
 
 /* 主题切换的圆形扩散：禁用 root 快照自带的默认 fade，只让 ThemeToggle 注入的
-   clipPath Web Animation 驱动过渡，避免两层动画叠加导致闪烁。
-   仅作用于 root —— 具名元素（如 post-title-${slug}）的 morph 不受影响。 */
+   clipPath Web Animation 驱动过渡，避免两层动画叠加导致闪烁。 */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;

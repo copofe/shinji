@@ -26,11 +26,7 @@ export default function HomeSections({ posts }: { posts: Post[] }) {
               label={post.title}
             >
               <CardHeader>
-                <CardTitle
-                  style={{ viewTransitionName: `post-title-${post.slug}` }}
-                >
-                  {post.title}
-                </CardTitle>
+                <CardTitle>{post.title}</CardTitle>
                 <CardDescription className="truncate">
                   {post.excerpt}
                 </CardDescription>

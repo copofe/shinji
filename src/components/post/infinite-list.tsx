@@ -67,11 +67,7 @@ export default function InfiniteList({
             >
               <Card href={`/blog/${post.slug}`} index={i} label={post.title}>
                 <CardHeader>
-                  <CardTitle
-                    style={{ viewTransitionName: `post-title-${post.slug}` }}
-                  >
-                    {post.title}
-                  </CardTitle>
+                  <CardTitle>{post.title}</CardTitle>
                   <CardDescription className="truncate">
                     {post.excerpt}
                   </CardDescription>

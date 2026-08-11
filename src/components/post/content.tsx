@@ -38,9 +38,7 @@ export default function PostContent({
           />
         ) : null}
         <article className="article w-full max-w-none">
-          <h1 style={{ viewTransitionName: `post-title-${post.slug}` }}>
-            {post.title}
-          </h1>
+          <h1>{post.title}</h1>
           <div className="mt-2 mb-8">
             <PostMeta post={post} />
           </div>
