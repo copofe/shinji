@@ -246,10 +246,22 @@
       ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
   }
 
-  /* 代码块（rehype-pretty-code 产出 pre），行高与圆角 */
+  /* 代码块（rehype-pretty-code 产出 pre）：keepBackground 未关，这里覆盖背景
+     为站点 muted token，跟随主题；圆角与下间距与文章其他块一致。 */
   .article pre {
     margin: 0 0 26px;
     border-radius: 0.5rem;
+    background-color: hsl(var(--muted));
+    border: 1px solid hsl(var(--border));
+  }
+
+  /* 双主题 token：rehype-pretty-code 同时输出 --shiki-light 与 --shiki-dark，
+     默认走 light，.dark 下走 dark，跟随整站主题切换。 */
+  .article code [data-line] span {
+    color: var(--shiki-light);
+  }
+  .dark .article code [data-line] span {
+    color: var(--shiki-dark);
   }
 
   /* 图片/视频：image.tsx 用 figure 包裹，给 figure 设下间距与段落一致 */

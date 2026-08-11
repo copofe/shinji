@@ -25,7 +25,10 @@ export async function renderMdx(source: string): Promise<MDXContent> {
       outputFormat: 'function-body',
       development: false,
       remarkPlugins: [remarkGfm],
-      rehypePlugins: [rehypeUnwrapImages, rehypePrettyCode],
+      rehypePlugins: [
+        rehypeUnwrapImages,
+        [rehypePrettyCode, { theme: { light: 'github-light', dark: 'github-dark' } }],
+      ],
     })
   )
   const mod = await run(code, { ...runtime, Fragment: runtime.Fragment })
