@@ -14,7 +14,7 @@ import {
   type ReactElement,
   type ReactNode,
 } from 'react'
-import { Link } from 'next-view-transitions'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ArrowRight, type LucideIcon } from 'lucide-react'
 import { cn } from '::/libs/utils'

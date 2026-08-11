@@ -15,7 +15,7 @@ export default function PostContent({
   const router = useRouter()
 
   // 回到来源页：首页进回首页、列表进回列表。next/navigation 的 back() 包装了
-  // history.back()，与 next-view-transitions 的导航过渡配合，标题 morph 也会反向。
+  // history.back()。
   const goBack = () => router.back()
 
   return (
