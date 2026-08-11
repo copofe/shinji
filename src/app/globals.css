@@ -367,9 +367,9 @@ pre [data-line] {
   animation: shimmer 1.5s ease-in-out infinite;
 }
 
-/* 主题切换的圆形扩散：禁用 root 快照自带的默认 fade，只让 ThemeToggle 注入的
-   clipPath Web Animation 驱动过渡，避免两层动画叠加导致闪烁。 */
-::view-transition-old(root),
+/* 主题切换的圆形扩散：只禁 new(root) 的默认 fade，让 ThemeToggle 注入的
+   clipPath Web Animation 驱动。old(root) 的 fade 必须保留——页面导航也走
+   root 过渡，禁掉 old 会让旧页快照停留在 opacity:1，遮住新页形成黑遮罩。 */
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
