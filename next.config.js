@@ -4,10 +4,13 @@
 // <script>，nonce 需在 layout 读 headers()，会把 revalidate=3600 的 ISR
 // 强制变成动态渲染，毁掉边缘缓存。静态 CSP 仍收紧 object-src / base-uri
 // / form-action / frame-ancestors / connect-src——实打实的纵深防御。
+const isDev = process.env.NODE_ENV === 'development'
+
 const ContentSecurityPolicy = [
   "default-src 'self'",
-  // RSC payload + next-themes 注入脚本 = 内联，无法避免
-  "script-src 'self' 'unsafe-inline'",
+  // RSC payload + next-themes 注入脚本 = 内联，无法避免；
+  // dev 模式 React 还需 eval() 重建调用栈，生产不开。
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''}`,
   "style-src 'self' 'unsafe-inline'",
   // 博客封面、friend favicon 走 https / data:
   "img-src 'self' data: https:",
