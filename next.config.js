@@ -51,6 +51,9 @@ const securityHeaders = [
 ]
 
 const nextConfig = {
+  // Cache Components（Next 16 稳定）：启用 PPR + use cache + dynamicIO 的统一开关。
+  // 数据默认动态，由 'use cache' 显式缓存；见 src/db/post.ts 的两个数据函数。
+  cacheComponents: true,
   async headers() {
     return [
       {

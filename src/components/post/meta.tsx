@@ -1,7 +1,7 @@
 'use client'
 
 import { date } from '::/libs'
-import { Post } from '::/db/post'
+import type { Post } from '::/db/post'
 
 export default function PostMeta({ post }: { post: Post }) {
   return (

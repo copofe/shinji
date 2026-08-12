@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
 import PostMeta from '::/components/post/meta'
-import { Post } from '::/db/post'
+import type { Post } from '::/db/post'
 
 export default function PostContent({
   post,

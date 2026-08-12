@@ -1,5 +1,4 @@
-import { cache } from 'react'
-import { unstable_cache } from 'next/cache'
+import { cacheLife, cacheTag } from 'next/cache'
 import { createClient } from '::/libs/supabase/server'
 import { Database } from '::/db/types'
 
@@ -27,37 +26,43 @@ const DETAIL_PROJECTION =
 // 导出 PAGE_SIZE：页面层用它算总页数和分页导航范围。
 export const PAGE_SIZE = 10
 
-// 数据层缓存分页查询：同一分页 1 小时内命中缓存，避免每次跨境回源 Supabase。
-// cache key 由 unstable_cache 按 "posts-list" + 参数 page 自动区分，不会串页。
-export const listPublished = unstable_cache(
-  async (page: number): Promise<Post[]> => {
-    const supabase = createClient()
-    const from = (page - 1) * PAGE_SIZE
-    // range 是闭区间 [from, to]，故 to = from + size - 1，否则多取一行
-    const to = from + PAGE_SIZE - 1
-    const { data } = await supabase
-      .from('post')
-      .select(LIST_PROJECTION)
-      .eq('published', true)
-      .range(from, to)
-      .order('createdAt', { ascending: false })
-    return data ?? []
-  },
-  ['posts-list'],
-  { revalidate: 3600, tags: ['posts'] }
-)
+// 缓存策略统一在此：'use cache' + cacheLife('weeks')（revalidate 1 周、expire 30 天），
+// 失效以 on-demand 为主——发布/改稿后在 Vercel 后台按 tag purge。
+// 列表挂 tag 'posts'，按篇挂 tag `post:<slug>`，互不波及。
 
-// 请求内记忆化：generateMetadata 与页面体各自调用，但同一请求只命中 DB 一次
-export const getBySlug = cache(
-  async (slug: string): Promise<BlogPost | null> => {
-    const supabase = createClient()
-    const { data } = await supabase
-      .from('post')
-      .select(DETAIL_PROJECTION)
-      .eq('published', true)
-      .eq('slug', slug)
-      .limit(1)
-      .maybeSingle()
-    return data
-  }
-)
+// 已发布文章的分页列表（不含 content）。'use cache' 按 page 参数自动区分缓存键，
+// 不会串页。tag 'posts'：purge 它刷新列表数据 + 列表页 + /api/posts。
+export async function listPublished(page: number): Promise<Post[]> {
+  'use cache'
+  cacheLife('weeks')
+  cacheTag('posts')
+  const supabase = createClient()
+  const from = (page - 1) * PAGE_SIZE
+  // range 是闭区间 [from, to]，故 to = from + size - 1，否则多取一行
+  const to = from + PAGE_SIZE - 1
+  const { data } = await supabase
+    .from('post')
+    .select(LIST_PROJECTION)
+    .eq('published', true)
+    .range(from, to)
+    .order('createdAt', { ascending: false })
+  return data ?? []
+}
+
+// 按 slug 取单篇（含 content）。'use cache' 取代了原先的 React.cache 请求内 memo：
+// generateMetadata 与页面体共用同一条目，且跨请求持久缓存 1 周。
+// tag `post:${slug}`：purge 它只刷新那一篇详情，其余文章缓存不动。
+export async function getBySlug(slug: string): Promise<BlogPost | null> {
+  'use cache'
+  cacheLife('weeks')
+  cacheTag(`post:${slug}`)
+  const supabase = createClient()
+  const { data } = await supabase
+    .from('post')
+    .select(DETAIL_PROJECTION)
+    .eq('published', true)
+    .eq('slug', slug)
+    .limit(1)
+    .maybeSingle()
+  return data
+}

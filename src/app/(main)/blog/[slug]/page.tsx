@@ -1,19 +1,17 @@
 import { notFound } from 'next/navigation'
 import { Tweet } from 'react-tweet'
 import Image from '::/components/post/image'
-import { getBySlug } from '::/db/post'
+import { getBySlug, listPublished } from '::/db/post'
 import { renderMdx } from '::/libs/mdx'
 import PostContent from '::/components/post/content'
 import SEO from '::/seo'
 
-// 内容稳定的博客详情页走 ISR：命中缓存时由边缘秒回，
-// 仅后台 revalidate 那一次回源 Supabase 新加坡。
-export const revalidate = 3600
-
-// 返回空数组 + dynamicParams 默认 true：不预渲染任何 slug，
-// 而是按访问时按需生成并缓存。新增文章自动生成新缓存，无需重新部署。
-export function generateStaticParams() {
-  return []
+// Cache Components 要求 generateStaticParams 至少返回一个 param，用于构建期校验
+// （确保无 cookies/headers/searchParams 等 runtime 动态访问）。
+// 预渲染最新一页；其余 slug 由 dynamicParams（默认 true）按需生成，新文章无需重新部署。
+export async function generateStaticParams() {
+  const posts = await listPublished(1)
+  return posts.map((post) => ({ slug: post.slug }))
 }
 
 type params = Promise<{ slug: string }>

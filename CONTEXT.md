@@ -16,10 +16,14 @@
 
 `src/db/post.ts` —— post 聚合的数据访问模块。以领域概念命名,纠正了原 `queries.ts`(实为投影字符串)的名不副实。确立了 `src/db/` 的模式:**一聚合一模块**,以概念命名;`types.ts` 持 schema,聚合模块持访问函数与派生类型。
 
-接口:
+接口（均为 `'use cache'` 函数，缓存策略内化于此）:
 
-- `listPublished(page)` —— 已发布文章的分页列表,不含 content
-- `getBySlug(slug)` —— 按 slug 取单篇,含 content;React `cache()` 包裹,请求内记忆化
+- `listPublished(page)` —— 已发布文章的分页列表,不含 content;`cacheLife('weeks')` + `cacheTag('posts')`
+- `getBySlug(slug)` —— 按 slug 取单篇,含 content;`cacheLife('weeks')` + `cacheTag('post:' + slug)`。`'use cache'` 取代了原 React.cache 的请求内记忆化(generateMetadata 与页面体共用同一条目),并扩展为跨请求持久缓存
+
+缓存与失效:全局 `cacheComponents: true`(Next 16,PPR + use cache 统一开关;数据默认动态,由这两个函数显式缓存)。页面不再设 `export const revalidate`——所有数据均来自 `'use cache'` 函数、且不读 cookies/headers/searchParams,故 cacheComponents 下自动整体预渲染,tag 经由被消费的数据函数传递到路由,`revalidateTag` 可命中。失效走 Vercel 后台 on-demand purge:`posts` → 列表(`/`、`/blog`、`/api/posts`);`post:<slug>` → 仅该篇详情。原 `unstable_cache`(静态 tag 数组,无法按 slug 分 tag)与 React.cache 均已移除。
+
+历史:迁移前 `listPublished` 走 `unstable_cache` + `tags:['posts']`(revalidate 3600),`getBySlug` 走 React.cache(仅请求内 memo,无持久缓存、无 tag,详情页只能靠 ISR 3600s 或重新部署刷新)。`unstable_cache` 的 tags 是静态数组,做不到"一篇一个 tag",故按篇失效必须切到 `'use cache'` 的动态 `cacheTag`——这是启用 cacheComponents 的根因。
 
 派生类型:
 

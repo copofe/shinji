@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'motion/react'
-import { Post, PAGE_SIZE } from '::/db/post'
+import type { Post } from '::/db/post'
 import {
   Card,
   CardGroup,
@@ -14,14 +14,16 @@ import { ThinkingIndicator } from '::/components/ui/thinking-indicator'
 
 export default function InfiniteList({
   initialPosts,
+  initialHasMore,
 }: {
   initialPosts: Post[]
+  initialHasMore: boolean
 }) {
   const [posts, setPosts] = useState<Post[]>(initialPosts)
   const [page, setPage] = useState(1)
   const [loading, setLoading] = useState(false)
-  // 首屏返回不足一页 → 已经到底
-  const [done, setDone] = useState(initialPosts.length < PAGE_SIZE)
+  // 首屏是否还有更多由服务端告知（客户端无需知道页大小）
+  const [done, setDone] = useState(!initialHasMore)
   // 记录最近一次追加前已存在的卡片数：索引 >= 该值的卡片入场动画，
   // 更早的卡片用 initial={false} 瞬间显示（SSR 首屏不延迟、无 hydration 闪烁）。
   const [animatedFromIndex, setAnimatedFromIndex] = useState(

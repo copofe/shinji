@@ -2,8 +2,6 @@ import Introduction from '::/components/Introduction'
 import HomeSections from '::/components/home-sections'
 import { listPublished } from '::/db/post'
 
-export const revalidate = 3600
-
 export default async function Home() {
   const posts = await listPublished(1)
 
